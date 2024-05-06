@@ -13,8 +13,8 @@ export const Sidebar = () => {
                 <div>ArrowFlicks</div>
             </div>
             <div className={s.buttonContainer}>
-                <ButtonComponent title={'Movies'}/>
-                <ButtonComponent title={'Rated movies'}/>
+                <ButtonComponent background={"#9854F6"} color={'#000000'} variant={'subtle'} title={'Movies'}/>
+                <ButtonComponent background={"#9854F6"} color={'#000000'}  variant={'subtle'} title={'Rated movies'}/>
             </div>
 
         </div>
