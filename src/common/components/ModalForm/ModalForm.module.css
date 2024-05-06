@@ -1,0 +1,24 @@
+.root {
+    max-width: 380px;
+    max-height: 208px;
+}
+
+.headerTitle {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.closeButton {
+    width: 16px;
+    height: 16px;
+    color: #ACADB9;
+}
+.title {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}

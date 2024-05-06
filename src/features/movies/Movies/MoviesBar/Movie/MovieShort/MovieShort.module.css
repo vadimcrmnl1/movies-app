@@ -1,0 +1,95 @@
+.wrapper {
+    background-color: white;
+    width: 482px;
+    height: 218px;
+    margin: 5px 0 5px 0;
+    border-radius: 12px;
+
+}
+
+.container {
+    margin: 20px;
+    display: flex;
+}
+
+.imageContainer {
+    flex-basis: 30%;
+}
+
+.imageContainer img {
+    /*height: 170px;*/
+    width: 119px;
+    max-height: 170px;
+}
+
+.imageContainer p {
+
+}
+
+.movieContainer {
+    max-width: 70%;
+    max-height: 170px;
+    flex-basis: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.titleContainer {
+
+}
+.title {
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #9854F6;
+}
+.year {
+    font-family: Inter, sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #7B7C88;
+
+    line-height: 20px;
+
+}
+.averageContainer {
+    display: flex;
+    min-width: 115px;
+    width: max-content;
+    height: 28px;
+    flex-direction: row;
+    align-items: center;
+    /*justify-content: space-between;*/
+}
+
+.average {
+    font-family: Inter, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #000000;
+    margin: 0 5px 0 5px;
+}
+.genresContainer {
+    display: flex;
+    height: 20px;
+    flex-direction: row;
+    justify-content: normal;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.titleBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.genreTitle {
+    color: #000000;
+    margin-right: 5px;
+}
+.genre {
+    margin-right: 8px;
+}

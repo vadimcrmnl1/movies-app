@@ -1,0 +1,38 @@
+import {GetGenresType, GetMoviesParamsType, MoviesResponseResultsType} from "../../../api/api";
+
+export const fetchMoviesAC = (movies: MoviesResponseResultsType[]) => ({
+    type: 'MOVIES/FETCH_MOVIES',
+    payload: {movies}
+} as const)
+export const fetchGenresAC = (genres: GetGenresType) => ({
+    type: 'MOVIES/FETCH_GENRES',
+    payload: {genres}
+} as const)
+export const setPageAC = (page: number) => ({
+    type: 'MOVIES/SET_PAGE',
+    payload: {page}
+} as const)
+export const setYearAC = (year: number) => ({
+    type: 'MOVIES/SET_PRIMARY_RELEASE_YEAR',
+    payload: {year}
+} as const)
+export const setSortByAC = (sortBy: string) => ({
+    type: 'MOVIES/SET_SORT_BY',
+    payload: {sortBy}
+} as const)
+export const setGenreAC = (genre: number) => ({
+    type: 'MOVIES/SET_GENRE',
+    payload: {genre}
+} as const)
+export const setVoteAverageGteAC = (averageGte: number | null) => ({
+    type: 'MOVIES/SET_VOTE_AVERAGE_GTE',
+    payload: {averageGte}
+} as const)
+export const setVoteAverageLteAC = (averageLte: number | null) => ({
+    type: 'MOVIES/SET_VOTE_AVERAGE_LTE',
+    payload: {averageLte}
+} as const)
+export const setResetFiltersAC = (params: GetMoviesParamsType) => ({
+    type: 'MOVIES/SET_RESET_FILTERS',
+    payload: {params}
+} as const)

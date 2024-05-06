@@ -1,0 +1,73 @@
+.wrapper {
+    width: 100%;
+}
+
+.container {
+    width: 980px;
+    height: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.container p {
+    font-family: Inter, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 44px;
+}
+
+.selectContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+.selectFormContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.selectForm {
+    width: 283px;
+    margin-right: 10px;
+}
+
+.selectRatingForm {
+    max-width: 283px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+    margin-right: 5px;
+
+
+}
+
+.selectRating {
+    width: 45%;
+}
+
+.selectResetForm {
+    width: min-content;
+}
+
+.selectSortForm {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin: 10px 0 20px 0;
+}
+.moviesContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.paginationBlock {
+    margin: 20px 0 60px 0;
+    display: flex;
+    justify-content: end;
+}
