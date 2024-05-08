@@ -1,4 +1,4 @@
-import {GetGenresType, GetMoviesParamsType, MoviesResponseResultsType} from "../../../api/api";
+import {GetGenresType, GetMoviesParamsType, MovieDetailsType, MoviesResponseResultsType} from "../../../api/api";
 
 export const fetchMoviesAC = (movies: MoviesResponseResultsType[]) => ({
     type: 'MOVIES/FETCH_MOVIES',
@@ -35,4 +35,8 @@ export const setVoteAverageLteAC = (averageLte: number | null) => ({
 export const setResetFiltersAC = (params: GetMoviesParamsType) => ({
     type: 'MOVIES/SET_RESET_FILTERS',
     payload: {params}
+} as const)
+export const setMovieDetailsAC = (movie: MovieDetailsType) => ({
+    type: 'MOVIES/SET_MOVIE_DETAILS',
+    payload: {movie}
 } as const)

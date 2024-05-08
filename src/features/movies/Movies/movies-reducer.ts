@@ -1,10 +1,16 @@
-import {GetGenresChildrenType, GetMoviesParamsType, moviesApi, MoviesResponseResultsType} from "../../../api/api";
+import {
+    GetGenresChildrenType,
+    GetMoviesParamsType,
+    MovieDetailsType,
+    moviesApi,
+    MoviesResponseResultsType
+} from "../../../api/api";
 import {MoviesActionsType} from "./types";
 import {AllReducersActionsType, AppThunk} from "../../../app/types";
 import * as appActions from './../../../app/actions'
 import * as moviesActions from './actions'
 
-export const moviesInitialState = {
+const moviesInitialState = {
     movies: {
         page: 1,
         results: [] as MoviesResponseResultsType[],
@@ -20,7 +26,8 @@ export const moviesInitialState = {
         with_genres: null,
         ['vote_average.gte']: null,
         ['vote_average.lte']: null
-    } as GetMoviesParamsType
+    } as GetMoviesParamsType,
+    movie: {} as MovieDetailsType
 }
 export type MoviesInitialStateType = typeof moviesInitialState
 
@@ -44,6 +51,8 @@ export const moviesReducer = (state: MoviesInitialStateType = moviesInitialState
             return {...state, params: {...state.params, sort_by: action.payload.sortBy}}
         case 'MOVIES/SET_RESET_FILTERS':
             return {...state, params: action.payload.params}
+        case 'MOVIES/SET_MOVIE_DETAILS':
+            return {...state, movie: action.payload.movie}
         default:
             return state
     }
@@ -57,6 +66,7 @@ export const fetchMovies = (): AppThunk<AllReducersActionsType> => async (dispat
     try {
         const res = await moviesApi.getMovies(params)
         dispatch(moviesActions.fetchMoviesAC(res.data))
+
     } catch (e) {
         console.error('error', e)
     } finally {
@@ -75,5 +85,54 @@ export const fetchGenres = (): AppThunk<AllReducersActionsType> => async (dispat
     } finally {
         dispatch(appActions.setAppIsLoadingAC(false))
 
+    }
+}
+
+export const fetchRatedMovies = (): AppThunk<AllReducersActionsType> =>
+    async (dispatch, getState) => {
+        dispatch(appActions.setAppIsLoadingAC(true))
+        const id = getState().auth.guest_session_id
+        const params = {language: 'en-Us', page: 1, sort_by: 'created_at.asc'}
+        try {
+            const res = await moviesApi.getRatedMovies(id, params)
+            console.log('rated movies', res)
+        } catch (e) {
+            console.error(e)
+        } finally {
+            dispatch(appActions.setAppIsLoadingAC(false))
+
+        }
+    }
+export const addRating = (movieId: number, rating: number): AppThunk<AllReducersActionsType> =>
+    async (dispatch, getState) => {
+    dispatch(appActions.setAppIsLoadingAC(true))
+    debugger
+    const params = {
+        guest_session_id: getState().auth.guest_session_id,
+        session_id: getState().auth.session_id
+    }
+    const ratingObject = {
+    }
+    try {
+        const res = await moviesApi.addRating(movieId, params, ratingObject)
+    } catch (e) {
+        console.error(e)
+    } finally {
+        dispatch(appActions.setAppIsLoadingAC(false))
+    }
+}
+export const fetchMovieDetails = (id: number): AppThunk<AllReducersActionsType> => async (dispatch, getState) => {
+    dispatch(appActions.setAppIsLoadingAC(true))
+    const params = {
+        append_to_response: 'videos',
+        language: 'en-Us'
+    }
+    try {
+        const res = await moviesApi.getMovieDetails(id, params)
+        dispatch(moviesActions.setMovieDetailsAC(res.data))
+    } catch (e) {
+        console.error(e)
+    } finally {
+        dispatch(appActions.setAppIsLoadingAC(false))
     }
 }

@@ -1,5 +1,5 @@
 .wrapper {
-    width: 20%;
+    max-width: 280px;
     /*height: 90%;*/
     min-height: 100vh;
     background-color: #F2EBF9;
@@ -39,4 +39,32 @@
     justify-content: space-evenly;
     margin: 20px;
     /*height: 10%;*/
+    min-height: 100px;
+}
+.linkActive {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    /*line-height: 22.4;*/
+    padding: 10px;
+    color: #9854F6;
+    text-decoration: none;
+    background-color: #E5D5FA;
+    border-radius: 8px;
+}
+
+.linkPending {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    /*line-height: 22.4;*/
+    padding: 10px;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+.linkPending:hover {
+    background-color: #e8e1ee;
+
 }

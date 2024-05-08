@@ -4,6 +4,7 @@ import {useAppSelector} from "../../../../../../app/store";
 import {selectGenres} from "../../../selectors";
 import noImage from './../../../../../../common/images/no_image_logo.png'
 import {ModalForm} from "../../../../../../common/components/ModalForm/ModalForm";
+import {NavLink} from "react-router-dom";
 
 type MoviePropsType = {
     image: string
@@ -13,14 +14,14 @@ type MoviePropsType = {
     voteCount: number
     voteAverage: number
     genre: number[]
+    id: number
 
 }
 
-export const MovieShort: FC<MoviePropsType> = ({voteAverage, genre, image, title, voteCount, year}) => {
+export const MovieShort: FC<MoviePropsType> = ({id, voteAverage, genre, image, title, voteCount, year}) => {
     const formatNum = n => n >= 1000 ? `${(n / 1000).toFixed(1)}К` : `${n}`;
     const genres = useAppSelector(selectGenres)
     const fullGenres = genres.filter(i => genre.includes(i.id))
-    console.log('full Genres', fullGenres)
 
     return (
         <div className={s.wrapper}>
@@ -31,10 +32,14 @@ export const MovieShort: FC<MoviePropsType> = ({voteAverage, genre, image, title
                 <div className={s.movieContainer}>
                     <div className={s.titleContainer}>
                         <div className={s.titleBlock}>
-                            <div className={s.title}>{title}</div>
+                            <div className={s.title}>
+                                <NavLink to={`/movie/${id}`} className={s.title}>
+                                    {title}
+                                </NavLink>
+                            </div>
                             <div>
                                 {/*<div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}}></div>*/}
-                                <ModalForm headerTitle={'Your rating'} title={title}/>
+                                <ModalForm id={id} headerTitle={'Your rating'} title={title}/>
                             </div>
                         </div>
                         <div className={s.year}>{year.slice(0, 4)}</div>

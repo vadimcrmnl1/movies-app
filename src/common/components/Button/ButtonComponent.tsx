@@ -5,6 +5,7 @@ import './ButtonComponent.css'
 type ButtonComponentProps = {
     title: string
     eventHandle?: () => void
+    type?: 'save' | 'remove'
 }
 
 export const ButtonComponent: FC<ButtonComponentProps> = ({title}) => {
@@ -23,4 +24,9 @@ export const ButtonReset: FC<ButtonComponentProps> = ({title, eventHandle}) => {
     return <Button onClick={eventHandle} size={'compact-md'}
                    style={{height: '42px', fontWeight: '500', fontSize: '14px', lineHeight: '20px'}}
                    variant="transparent" color="#7B7C88">{title}</Button>;
+}
+export const ButtonModalSave: FC<ButtonComponentProps> = ({title, eventHandle, type}) => {
+    return <Button onClick={eventHandle} size={'compact-md'} radius={8} justify={'center'}
+                   style={{height: '40px', minWidth: '73px', fontWeight: '600', fontSize: '14px', lineHeight: '20px'}}
+                   variant={type === 'save' ? 'filled' : 'subtle' } color="#9854F6">{title}</Button>;
 }

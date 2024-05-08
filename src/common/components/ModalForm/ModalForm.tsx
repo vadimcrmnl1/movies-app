@@ -1,37 +1,37 @@
 import {useDisclosure} from '@mantine/hooks';
 import {Modal} from '@mantine/core';
 import s from './ModalForm.module.css'
-import React, {FC} from "react";
-import {ButtonComponent} from "../Button/ButtonComponent";
+import React, {FC, useState} from "react";
+import {ButtonModalSave} from "../Button/ButtonComponent";
+import {Rating} from "../Rating/Rating";
+import {useAppDispatch} from "../../../app/store";
+import {addRating} from "../../../features/movies/Movies/movies-reducer";
 
 type ModalFormPropsType = {
     title: string
     headerTitle: string
+    id: number
 }
 
-export const ModalForm: FC<ModalFormPropsType> = ({title, headerTitle}) => {
+export const ModalForm: FC<ModalFormPropsType> = ({id, title, headerTitle}) => {
+    const dispatch = useAppDispatch()
     const [opened, { open, close }] = useDisclosure(false);
+    const [rating, setRating] = useState(0)
+    const handleAddRating = () => {
+        dispatch(addRating(id, rating))
+        close()
+    }
 
     return (
         <>
-            <Modal radius={8} classNames={{root: s.root, title: s.headerTitle, close: s.closeButton}} title={headerTitle} opened={opened} onClose={close} centered>
+            <Modal radius={8} classNames={{ title: s.headerTitle, close: s.closeButton}} title={headerTitle} opened={opened} onClose={close} centered>
                 <div className={s.wrapper}>
                     <div className={s.title}>{title}</div>
-                    <div className={s.ratingBlock}>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-                        <div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}} onClick={open}></div>
-
-                    </div>
+                    <Rating eventHandle={setRating}/>
                     <div className={s.buttonBlock}>
-                        <ButtonComponent title={'Save'} variant={'filled'} width={'73px'} height={'40px'} color={'#fff'} background={'#9854F6'}/>
+                        <ButtonModalSave eventHandle={handleAddRating} type={'save'} title={'Save'}/>
+                        <ButtonModalSave type={'remove'} title={'Remove rating'}/>
+
                     </div>
                 </div>
 

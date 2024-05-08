@@ -1,8 +1,8 @@
-.root {
-    min-width: 380px;
-    min-height: 208px;
-    border-radius: 8px;
-}
+/*.root {*/
+/*    min-width: 380px;*/
+/*    min-height: 208px;*/
+/*    border-radius: 8px;*/
+/*}*/
 
 .headerTitle {
     font-family: Inter, sans-serif;
@@ -17,24 +17,30 @@
     height: 16px;
     color: #ACADB9;
 }
+
 .wrapper {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     justify-items: start;
 }
+
 .title {
     font-family: Inter, sans-serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
 }
+
 .ratingBlock {
     margin: 20px 0 20px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.buttonBlock {
 
+.buttonBlock {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
 }
