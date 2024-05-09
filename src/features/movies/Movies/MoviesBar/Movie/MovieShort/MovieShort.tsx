@@ -21,7 +21,7 @@ type MoviePropsType = {
 export const MovieShort: FC<MoviePropsType> = ({id, voteAverage, genre, image, title, voteCount, year}) => {
     const formatNum = n => n >= 1000 ? `${(n / 1000).toFixed(1)}К` : `${n}`;
     const genres = useAppSelector(selectGenres)
-    const fullGenres = genres.filter(i => genre.includes(i.id))
+    const fullGenres = genres && genres.length && genres.filter(i => genre && genre.length && genre.includes(i.id))
 
     return (
         <div className={s.wrapper}>
@@ -51,7 +51,7 @@ export const MovieShort: FC<MoviePropsType> = ({id, voteAverage, genre, image, t
                     </div>
                     <div className={s.genresContainer}>
                         <div className={s.year + ' ' + s.genre}>Genres</div>
-                        {fullGenres.map((el, index) => {
+                        {fullGenres && fullGenres.length && fullGenres.map((el, index) => {
                             return <div className={s.year + ' ' + s.genreTitle}
                                         key={el.id}>{el.name}</div>
                         })}

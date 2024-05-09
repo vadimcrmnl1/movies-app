@@ -15,7 +15,7 @@ export const MovieFull = () => {
     const formatNum = n => n >= 1000 ? `${(n / 1000).toFixed(1)}К` : `${n}`;
     const movie_id = useParams().movie_id
     const genres = useAppSelector(selectGenres)
-    const fullGenres = genres.filter(i => movie.genres.map(el => el.id).includes(i.id))
+    const fullGenres = genres && genres.length && genres.filter(i => movie.genres && movie.genres.length && movie.genres.map(el => el.id).includes(i.id))
     const duration = function (mins) {
         let hours = Math.trunc(mins/60);
         let minutes = mins % 60;
@@ -46,10 +46,10 @@ export const MovieFull = () => {
                             <div className={s.informBlock}>
                                 <div className={s.titleBlock}>
                                     <div className={st.title}>{movie.title}</div>
-                                    <div className={st.year}>{movie.release_date}</div>
+                                    <div className={st.year}>{movie.release_date && movie.release_date.slice(0, 4)}</div>
                                     <div className={st.averageContainer}>
                                         <div className="fa-solid fa-star"
-                                             style={{color: '#FAB005', fontSize: '23px'}}></div>
+                                             style={{color: '#FAB005', fontSize: '23px'}}>{null}</div>
                                         <div className={st.average}>{movie.vote_average}</div>
                                         <div className={st.year}>({formatNum(movie.vote_count)})</div>
                                     </div>
@@ -73,7 +73,7 @@ export const MovieFull = () => {
                                     </div>
                                     <div className={s.detail}>
                                         <div>Genres</div>
-                                        {fullGenres.map((el, index) => {
+                                        {fullGenres && fullGenres.length && fullGenres.map((el, index) => {
                                             return <span className={st.year + ' ' + st.genreTitle}
                                                         key={el.id}>{el.name}</span>
                                         })}
