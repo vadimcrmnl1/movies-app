@@ -10,7 +10,7 @@ import {
     setVoteAverageGteAC,
     setVoteAverageLteAC,
     setYearAC
-} from "../../actions";
+} from "../../../actions";
 import {useSelector} from "react-redux";
 import {
     selectAverageGte,
@@ -19,7 +19,7 @@ import {
     selectGenres,
     selectPrimaryReleaseYear,
     selectSortBy
-} from "../../selectors";
+} from "../../../selectors";
 
 const SelectContainer = () => {
     const dispatch = useAppDispatch()

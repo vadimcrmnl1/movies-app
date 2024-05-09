@@ -1,4 +1,4 @@
-import {AppRootStateType} from "../../../app/store";
+import {AppRootStateType} from "../../app/store";
 
 export const selectPage = (state: AppRootStateType) => state.movies.params.page
 export const selectPrimaryReleaseYear = (state: AppRootStateType) => state.movies.params.primary_release_year

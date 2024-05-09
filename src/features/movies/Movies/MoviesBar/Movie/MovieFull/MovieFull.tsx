@@ -3,8 +3,8 @@ import s from './MovieFull.module.css'
 import st from './../MovieShort/MovieShort.module.css'
 import {useAppDispatch, useAppSelector} from "../../../../../../app/store";
 import {useParams} from 'react-router-dom';
-import {fetchGenres, fetchMovieDetails} from "../../../movies-reducer";
-import {selectGenres, selectMovie} from "../../../selectors";
+import {fetchGenres, fetchMovieDetails} from "../../../../movies-reducer";
+import {selectGenres, selectMovie} from "../../../../selectors";
 import noImage from './../../../../../../common/images/no_image_logo.png'
 import {ModalForm} from "../../../../../../common/components/ModalForm/ModalForm";
 

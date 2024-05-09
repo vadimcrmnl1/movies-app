@@ -5,7 +5,7 @@ import React, {FC, useState} from "react";
 import {ButtonModalSave} from "../Button/ButtonComponent";
 import {Rating} from "../Rating/Rating";
 import {useAppDispatch} from "../../../app/store";
-import {addRating} from "../../../features/movies/Movies/movies-reducer";
+import {addRating} from "../../../features/movies/movies-reducer";
 
 type ModalFormPropsType = {
     title: string

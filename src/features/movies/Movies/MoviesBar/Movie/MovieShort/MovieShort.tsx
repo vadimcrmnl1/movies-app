@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import s from './MovieShort.module.css'
 import {useAppSelector} from "../../../../../../app/store";
-import {selectGenres} from "../../../selectors";
+import {selectGenres} from "../../../../selectors";
 import noImage from './../../../../../../common/images/no_image_logo.png'
 import {ModalForm} from "../../../../../../common/components/ModalForm/ModalForm";
 import {NavLink} from "react-router-dom";

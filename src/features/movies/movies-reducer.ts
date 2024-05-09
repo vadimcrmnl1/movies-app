@@ -4,10 +4,10 @@ import {
     MovieDetailsType,
     moviesApi,
     MoviesResponseResultsType
-} from "../../../api/api";
+} from "../../api/api";
 import {MoviesActionsType} from "./types";
-import {AllReducersActionsType, AppThunk} from "../../../app/types";
-import * as appActions from './../../../app/actions'
+import {AllReducersActionsType, AppThunk} from "../../app/types";
+import * as appActions from '../../app/actions'
 import * as moviesActions from './actions'
 
 const moviesInitialState = {

@@ -2,7 +2,7 @@ import * as actions from './actions'
 import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AnyAction} from "redux";
 import {AppRootStateType} from "./store";
-import {MoviesActionsType} from "../features/movies/Movies/types";
+import {MoviesActionsType} from "../features/movies/types";
 import {AuthActionsType} from "../features/auth/types";
 
 export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never

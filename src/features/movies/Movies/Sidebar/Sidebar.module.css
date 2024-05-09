@@ -1,6 +1,6 @@
 .wrapper {
     max-width: 280px;
-    /*height: 90%;*/
+    height: 90%;
     min-height: 100vh;
     background-color: #F2EBF9;
     display: flex;

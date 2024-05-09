@@ -4,6 +4,7 @@ import logo from './../../../../common/images/sidebar_logo.png'
 import {useAppDispatch} from "../../../../app/store";
 import {createSession, getRequestToken} from "../../../auth/auth-reducer";
 import {NavLink} from "react-router-dom";
+import {PATH} from "../../../../common/routes/Routes";
 
 
 export const Sidebar = () => {
@@ -22,7 +23,7 @@ export const Sidebar = () => {
             </div>
             <div className={s.buttonContainer}>
                 <NavLink style={{height: '42px'}}
-                    to="/"
+                    to={PATH.movies}
                     className={({ isActive, isPending }) =>
                         isPending ? s.linkPending : isActive ? s.linkActive : s.linkPending
                     }
@@ -30,7 +31,7 @@ export const Sidebar = () => {
                     Movies
                 </NavLink>
                 <NavLink style={{height: '42px'}}
-                    to="/rated_movies"
+                    to={PATH.ratedMovies}
                     className={({ isActive, isPending }) =>
                         isPending ? s.linkPending : isActive ? s.linkActive : s.linkPending
                     }

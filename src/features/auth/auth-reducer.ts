@@ -30,6 +30,7 @@ export const createGuestSession = (): AppThunk<AllReducersActionsType> => async 
     try {
         const res = await authApi.createGuestSession()
         dispatch(authActions.setGuestSessionIdAC(res.data.guest_session_id))
+        dispatch(appActions.setAppIsFirstEnter(true))
     } catch (e) {
         console.error('error', e)
     } finally {

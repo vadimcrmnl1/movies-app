@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import s from './MoviesBar.module.css'
 import {useAppDispatch, useAppSelector} from "../../../../app/store";
-import {fetchGenres, fetchMovies} from "../movies-reducer";
+import {fetchGenres, fetchMovies} from "../../movies-reducer";
 import SelectContainer from "./SelectContainer/SelectContainer";
 import {
     selectAverageGte,
@@ -10,7 +10,7 @@ import {
     selectMovies,
     selectPage,
     selectPrimaryReleaseYear, selectSortBy
-} from "../selectors";
+} from "../../selectors";
 import {MovieShort} from "./Movie/MovieShort/MovieShort";
 import {PaginationComponent} from "../../../../common/components/Pagination/PaginationComponent";
 import {IncorrectSearch} from "../../../../common/components/IncorrectSearch/IncorrectSearch";

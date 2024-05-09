@@ -1,8 +1,8 @@
 import {Pagination} from '@mantine/core';
 import React, {useState} from "react";
 import {useAppDispatch, useAppSelector} from "../../../app/store";
-import {selectMovies} from "../../../features/movies/Movies/selectors";
-import {setPageAC} from "../../../features/movies/Movies/actions";
+import {selectMovies} from "../../../features/movies/selectors";
+import {setPageAC} from "../../../features/movies/actions";
 
 export const PaginationComponent = () => {
     const dispatch = useAppDispatch()

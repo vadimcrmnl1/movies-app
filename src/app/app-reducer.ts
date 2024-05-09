@@ -2,7 +2,7 @@ import {AppActionsType} from "./types";
 
 const appInitialState: AppInitialStateType = {
     isLoading: false,
-    isFirstEnter: true
+    isFirstEnter: false
 }
 export type AppInitialStateType = typeof appInitialState
 export const appReducer = (state: AppInitialStateType = appInitialState, action: AppActionsType): AppInitialStateType => {

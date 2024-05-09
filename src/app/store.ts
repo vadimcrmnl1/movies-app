@@ -6,7 +6,7 @@ import {thunk} from 'redux-thunk'
 
 import {appReducer} from './app-reducer'
 import {AppThunkDispatch} from './types'
-import {moviesReducer} from "../features/movies/Movies/movies-reducer";
+import {moviesReducer} from "../features/movies/movies-reducer";
 import {authReducer} from "../features/auth/auth-reducer";
 
 const rootReducer = combineReducers({

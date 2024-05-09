@@ -1,4 +1,4 @@
-import {GetGenresType, GetMoviesParamsType, MovieDetailsType, MoviesResponseResultsType} from "../../../api/api";
+import {GetGenresType, GetMoviesParamsType, MovieDetailsType, MoviesResponseResultsType} from "../../api/api";
 
 export const fetchMoviesAC = (movies: MoviesResponseResultsType[]) => ({
     type: 'MOVIES/FETCH_MOVIES',
