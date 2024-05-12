@@ -4,6 +4,16 @@ export const fetchMoviesAC = (movies: MoviesResponseResultsType[]) => ({
     type: 'MOVIES/FETCH_MOVIES',
     payload: {movies}
 } as const)
+export const addRatingAC = (id: number | null, rating: number | null) => ({
+    type: 'MOVIES/ADD_RATING',
+    payload: {id, rating}
+} as const)
+export const removeRatingAC = (id: number,) => ({
+    type: 'MOVIES/REMOVE_RATING',
+    payload: {id}
+
+} as const)
+
 export const fetchGenresAC = (genres: GetGenresType) => ({
     type: 'MOVIES/FETCH_GENRES',
     payload: {genres}

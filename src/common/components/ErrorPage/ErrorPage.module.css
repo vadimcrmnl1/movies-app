@@ -62,7 +62,7 @@
 }
 .homeButton {
     padding: 10px 20px 10px 20px;
-    width: 103px;
+    min-width: 103px;
     height: 40px;
     background-color: #9854F6;
     border-radius: 8px;

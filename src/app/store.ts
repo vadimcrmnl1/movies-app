@@ -9,6 +9,26 @@ import {AppThunkDispatch} from './types'
 import {moviesReducer} from "../features/movies/movies-reducer";
 import {authReducer} from "../features/auth/auth-reducer";
 
+function saveToLocalStorage (state : AppRootStateType) {
+    try {
+        const serialisedState = JSON.stringify(state)
+        localStorage.setItem('persistantState', serialisedState)
+    } catch (e) {
+        console.warn(e)
+    }
+}
+
+function loadFromLocalStorage () {
+    try {
+        const serialisedState = localStorage.getItem('persistantState')
+        if (serialisedState === null) return undefined
+        return JSON.parse(serialisedState)
+    } catch (e) {
+        console.warn(e)
+        return undefined
+    }
+}
+
 const rootReducer = combineReducers({
     app: appReducer,
     movies: moviesReducer,
@@ -19,7 +39,8 @@ const middlewareEnhancer = applyMiddleware<AppThunkDispatch, AppRootStateType>(t
 
 const composedEnhancers = composeWithDevTools(middlewareEnhancer)
 
-export const store = legacy_createStore(rootReducer, composedEnhancers)
+export const store = legacy_createStore(rootReducer, loadFromLocalStorage(), composedEnhancers)
+store.subscribe(() => saveToLocalStorage(store.getState()))
 export type AppRootStateType = ReturnType<typeof rootReducer>
 
 export const useAppDispatch = () => useDispatch<AppThunkDispatch>()

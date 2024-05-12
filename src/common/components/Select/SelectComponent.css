@@ -5,8 +5,36 @@
     font-weight: 700;
     padding-bottom: 8px;
     margin-right: 10px;
+    z-index: 9;
 
 }
+
 .mantine-Select-input {
     height: 42px;
+}
+
+.mantine-Select-error {
+    /*height: 40px;*/
+    color: red;
+    /*position: absolute;*/
+    margin-bottom: 10px;
+}
+@media screen and (max-width: 600px) {
+    .mantine-Select-wrapper {
+        width: 95%;
+        /*margin: 10px;*/
+        height: min-content;
+    }
+    .mantine-Select-label {
+        width: 100%;
+        font-size: 14px;
+        /*margin-left: 20px;*/
+    }
+    .mantine-Select-input {
+        width: 100%;
+        height: min-content;
+        /*margin-left: 20px;*/
+
+
+    }
 }

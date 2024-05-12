@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 
-.container p {
+.title {
     font-family: Inter, sans-serif;
     font-weight: 700;
     font-size: 32px;
@@ -64,6 +64,7 @@
     margin: 10px 0 20px 0;
 }
 .moviesContainer {
+    /*width: 100%;*/
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -72,4 +73,93 @@
     margin: 20px 0 60px 0;
     display: flex;
     justify-content: end;
+}
+.ratedPaginationBlock {
+    margin: 20px 0 60px 0;
+    display: flex;
+    justify-content: center;
+}
+.emptyRatedMoviesBlock {
+    /*position: center;*/
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background-color: yellow;*/
+}
+.ratedMoviesContainer {
+    min-width: 980px;
+}
+.titlePageBlock {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper {
+        max-width: 100%;
+        margin: 10px;
+    }
+    .container {
+        max-width: 100%;
+    }
+    .title {
+        height: 50px;
+        font-size: 20px;
+        margin: 0;
+        text-align: center;
+    }
+    .selectContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .selectFormContainer {
+        width: 95%;
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: center;
+    }
+    .selectSortForm {
+        justify-content: center;
+    }
+    .selectForm {
+        width: 100%;
+        margin: 10px
+    }
+    .paginationBlock {
+        justify-content: center;
+        width: 80%;
+        margin: 0 auto;
+    }
+    .selectRatingForm {
+        max-width: 100%;
+        margin: 0 20px 0 20px;
+        /*margin: 0;*/
+        /*margin: 10px;*/
+        /*justify-content: space-between;*/
+    }
+    .selectRating {
+        width: 40%;
+    }
+    .selectSortForm {
+        width: 100%;
+    }
+    .selectSortForm {
+        margin: 0;
+        justify-content: center;
+    }
+    .ratedMoviesContainer {
+        min-width: 100%;
+    }
+    .titlePageBlock {
+        flex-direction: column;
+    }
+
 }

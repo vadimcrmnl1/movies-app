@@ -1,21 +1,12 @@
 import React from 'react';
 import s from './Sidebar.module.css'
 import logo from './../../../../common/images/sidebar_logo.png'
-import {useAppDispatch} from "../../../../app/store";
-import {createSession, getRequestToken} from "../../../auth/auth-reducer";
 import {NavLink} from "react-router-dom";
 import {PATH} from "../../../../common/routes/Routes";
 
 
 export const Sidebar = () => {
-    const dispatch = useAppDispatch()
-    const handleAcceptToken = () => {
-        dispatch(getRequestToken())
-    }
-    const handleCreateSession = () => {
-        dispatch(createSession())
-    }
-    return (
+       return (
         <div className={s.wrapper}>
             <div className={s.logoContainer}>
                 <img src={logo} alt={'logo'}/>
@@ -38,8 +29,6 @@ export const Sidebar = () => {
                 >
                     Rated movies
                 </NavLink>
-                <button onClick={handleAcceptToken}>accept token</button>
-                <button onClick={handleCreateSession}>create session</button>
             </div>
 
         </div>

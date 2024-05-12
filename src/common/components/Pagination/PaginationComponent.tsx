@@ -12,6 +12,7 @@ export const PaginationComponent = () => {
         setValue(page)
         dispatch(setPageAC(page))
     }
-    return <Pagination boundaries={0} onChange={(value: number) => handleSetPage(value)} defaultValue={1} value={value} total={totalPages}
+    return <Pagination boundaries={0}
+                       onChange={(value: number) => handleSetPage(value)} defaultValue={1} value={value} total={totalPages}
                        color="#9854F6"/>;
 }

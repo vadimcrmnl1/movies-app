@@ -66,6 +66,7 @@ export type MoviesResponseResultsType = {
     video: boolean
     vote_average: number
     vote_count: number
+    rating?: number | null
 }
 export type GetMoviesParamsType = {
     language: string
@@ -105,12 +106,7 @@ type RequestTokenResponseType = {
     request_token: string
     expires_at: string
 }
-type RatingResponseType = {
-    vote_average: number
-}
-type RequestSessionIdType = {
-    request_token: string
-}
+
 type MovieRequestType = {
     append_to_response: string
     language: string
@@ -140,8 +136,24 @@ export type MovieDetailsType = {
     tagline: string;
     title: string;
     video: boolean;
+    videos: MovieDetailsVideosType;
     vote_average: number;
     vote_count: number;
+}
+type MovieDetailsVideosType = {
+    results: MovieDetailsVideosChildrenType[]
+}
+export type MovieDetailsVideosChildrenType = {
+	iso_639_1: string;
+	iso_3166_1: string;
+	name: string;
+	key: string;
+	site: string;
+	size: number;
+	type: string;
+	official: boolean;
+	published_at: string;
+	id: string;
 }
 export type MovieDetailsTypeGenres = {
     id: number;

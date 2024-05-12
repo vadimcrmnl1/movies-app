@@ -9,7 +9,8 @@ import {
     selectGenre,
     selectMovies,
     selectPage,
-    selectPrimaryReleaseYear, selectSortBy
+    selectPrimaryReleaseYear,
+    selectSortBy
 } from "../../selectors";
 import {MovieShort} from "./Movie/MovieShort/MovieShort";
 import {PaginationComponent} from "../../../../common/components/Pagination/PaginationComponent";
@@ -32,20 +33,22 @@ export const MoviesBar = () => {
     return (
         <div className={s.wrapper}>
             <div className={s.container}>
-                <p>Movies</p>
+                <p className={s.title}>Movies</p>
                 <SelectContainer/>
                 <div className={s.moviesContainer}>
-                    {movies && movies.results.map((el) => {
-                        return <MovieShort key={el.id} id={el.id} image={el.poster_path} title={el.title} year={el.release_date}
+                    {movies.results && movies.results.map((el) => {
+                        return <MovieShort key={el.id} id={el.id} image={el.poster_path}
+                                           title={el.title} year={el.release_date}
                                            popularity={el.popularity}
-                                           voteCount={el.vote_count} voteAverage={el.vote_average}
+                                           voteCount={el.vote_count}
+                                           voteAverage={el.vote_average}
                                            genre={el.genre_ids}/>
                     })}
                 </div>
                 {movies.results.length !== 0 ? <div className={s.paginationBlock}>
                         <PaginationComponent/>
                     </div>
-                    : <IncorrectSearch/>}
+                    : <IncorrectSearch title={' We don\'t have such movies, look for another one'}/>}
             </div>
         </div>
     );

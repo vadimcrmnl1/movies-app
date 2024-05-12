@@ -3,6 +3,7 @@ import {FC} from "react";
 import './SelectComponent.css'
 import {Select} from "@mantine/core";
 
+
 type SelectComponentProps = {
     label?: string
     placeholder: string
@@ -12,11 +13,11 @@ type SelectComponentProps = {
     eventHandler: (value: string) => void
     genre?: string
     value?: string
+    error?: string
 }
 
 
-
-export const SelectComponent: FC<SelectComponentProps> = ({value, eventHandler ,  label, placeholder, data}) => {
+export const SelectComponent: FC<SelectComponentProps> = ({value, eventHandler, label, placeholder, data}) => {
     return (
         <Select
             label={label}

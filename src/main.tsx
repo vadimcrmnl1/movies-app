@@ -8,6 +8,5 @@ import router from "./common/routes/Routes";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <Provider store={store}>
         <RouterProvider router={router}/>
-
     </Provider>
 );

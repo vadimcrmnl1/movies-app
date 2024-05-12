@@ -3,10 +3,11 @@ import s from "../ModalForm/ModalForm.module.css";
 
 type RatingPropsType = {
     eventHandle: (rating: number) => void
+    ratingCount: number
 }
 
-export const Rating: FC<RatingPropsType> = ({eventHandle}) => {
-    const [value, setValue] = useState(0)
+export const Rating: FC<RatingPropsType> = ({eventHandle, ratingCount}) => {
+    const [value, setValue] = useState(ratingCount)
     const handleChangeRating = (id: number) => {
         setValue(id)
         eventHandle(id)
@@ -36,11 +37,11 @@ type StarPropsType = {
 const Star: FC<StarPropsType> = ({selected, id, handleEvent}) => {
     if (selected) {
         return (
-            <div onClick={() => handleEvent(id)} className="fa-solid fa-star" style={{color: '#FAB005', fontSize: '23px'}}></div>
+            <div onClick={() => handleEvent(id)} className="fa-solid fa-star" style={{color: '#FAB005', fontSize: '23px'}}>{null}</div>
         )
     } else {
         return (
-            <div onClick={() => handleEvent(id)} className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}}></div>
+            <div onClick={() => handleEvent(id)} className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}}>{null}</div>
         )
     }
 

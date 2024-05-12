@@ -45,6 +45,7 @@
     line-height: 24px;
     color: #9854F6;
     text-decoration: none;
+
 }
 .navLink {
     --nl-hover: {
@@ -84,7 +85,7 @@
     flex-direction: row;
     justify-content: normal;
     align-items: center;
-    flex-wrap: wrap;
+    /*flex-wrap: nowrap;*/
 }
 
 .titleBlock {
@@ -98,4 +99,36 @@
 }
 .genre {
     margin-right: 8px;
+}
+@media screen and (max-width: 600px) {
+    .wrapper {
+        /*width: 100%;*/
+        height: max-content;
+        margin: 5px;
+    }
+    .container {
+        margin: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .imageContainer {
+    }
+    .title {
+        font-size: 16px;
+
+    }
+    .titleContainer {
+        min-height: 40%;
+    }
+    .movieContainer {
+        max-height: 100%;
+        margin-left: 10px;
+    }
+    .year {
+        font-size: 12px;
+    }
+    .average {
+        font-size: 12px;
+    }
+
 }

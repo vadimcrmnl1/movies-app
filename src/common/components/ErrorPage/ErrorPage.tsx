@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './ErrorPage.module.css'
 import st from './../../../features/movies/Movies/Sidebar/Sidebar.module.css'
 import logo from "../../images/error_page_sidebar_logo.png";
@@ -25,11 +25,13 @@ export const ErrorPage = () => {
 
                         <Rainbow/>
                     </div>
-                    <div className={s.descBlock}>
-                        <div>We can’t find the page you are looking for</div>
-                        <NavLink to={PATH.movies} className={s.homeButton}>Go Home</NavLink>
+                    <TitleButtonComponent title={'We can’t find the page you are looking for'}
+                                          buttonTitle={'Go Home'}/>
+                    {/*<div className={s.descBlock}>*/}
+                    {/*    <div>We can’t find the page you are looking for</div>*/}
+                    {/*    <NavLink to={PATH.movies} className={s.homeButton}>Go Home</NavLink>*/}
 
-                    </div>
+                    {/*</div>*/}
                 </div>
 
             </div>
@@ -40,13 +42,26 @@ export const ErrorPage = () => {
 const Rainbow = () => {
     return (
         <div className={s.picture}>
-            <div style={{backgroundColor: '#ffffff', minWidth: '93px', height: '50px'}}></div>
-            <div style={{backgroundColor: '#FBE54D', minWidth: '93px', height: '50px'}}></div>
-            <div style={{backgroundColor: '#74FADB', minWidth: '93px', height: '50px'}}></div>
-            <div style={{backgroundColor: '#68DC42', minWidth: '93px', height: '50px'}}></div>
-            <div style={{backgroundColor: '#E83CF2', minWidth: '93px', height: '50px'}}></div>
-            <div style={{backgroundColor: '#D52D25', minWidth: '93px', height: '50px'}}></div>
-            <div style={{backgroundColor: '#0732B3', minWidth: '93px', height: '50px'}}></div>
+            <div style={{backgroundColor: '#ffffff', minWidth: '93px', height: '50px'}}>{null}</div>
+            <div style={{backgroundColor: '#FBE54D', minWidth: '93px', height: '50px'}}>{null}</div>
+            <div style={{backgroundColor: '#74FADB', minWidth: '93px', height: '50px'}}>{null}</div>
+            <div style={{backgroundColor: '#68DC42', minWidth: '93px', height: '50px'}}>{null}</div>
+            <div style={{backgroundColor: '#E83CF2', minWidth: '93px', height: '50px'}}>{null}</div>
+            <div style={{backgroundColor: '#D52D25', minWidth: '93px', height: '50px'}}>{null}</div>
+            <div style={{backgroundColor: '#0732B3', minWidth: '93px', height: '50px'}}>{null}</div>
+
+        </div>
+    )
+}
+type TitleButtonComponentPropsType = {
+    title: string
+    buttonTitle: string
+}
+export const TitleButtonComponent: FC<TitleButtonComponentPropsType> = ({title, buttonTitle}) => {
+    return (
+        <div className={s.descBlock}>
+            <div>{title}</div>
+            <NavLink to={PATH.movies} className={s.homeButton}>{buttonTitle}</NavLink>
 
         </div>
     )

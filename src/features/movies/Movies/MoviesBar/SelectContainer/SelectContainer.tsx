@@ -23,6 +23,7 @@ import {
 
 const SelectContainer = () => {
     const dispatch = useAppDispatch()
+
     const genres = useSelector(selectGenres).map(el => {
         return {value: el.id.toString(), label: el.name}
     })
@@ -90,17 +91,15 @@ const SelectContainer = () => {
     ]
     const sortBy = useAppSelector(selectSortBy)
     const averageGte = useAppSelector(selectAverageGte)
-    let averageLte = useAppSelector(selectAverageLte)
+    const averageLte = useAppSelector(selectAverageLte)
 
     const createArrayYears = (currentYear: number) => {
         const start = currentYear;
         const end = currentYear - 50;
         const arr = [];
-
         for (let i = end; i <= start; ++i) {
             arr.unshift(i);
         }
-
         return arr;
     }
     const years = createArrayYears(2024).map(el => el.toString())
@@ -110,11 +109,11 @@ const SelectContainer = () => {
     const handleSetYear = (id: string) => {
         dispatch(setYearAC(id as Number))
     }
-    const handleSetAverageGte = (id: number) => {
-        dispatch(setVoteAverageGteAC(id))
+    const handleSetAverageGte = (id: string) => {
+        dispatch(setVoteAverageGteAC(id as Number))
     }
-    const handleSetAverageLte = (id: number) => {
-        dispatch(setVoteAverageLteAC(id))
+    const handleSetAverageLte = (id: string) => {
+        dispatch(setVoteAverageLteAC(id as Number))
     }
     const handleResetFilters = () => {
         dispatch(setResetFiltersAC({
@@ -145,10 +144,12 @@ const SelectContainer = () => {
                     <div className={s.selectRating}><SelectComponent type={'ratingsFrom'} rating={true}
                                                                      label={'Ratings'} placeholder={'From'}
                                                                      data={averages} value={averageGte}
+
                                                                      eventHandler={handleSetAverageGte}/>
                     </div>
                     <div className={s.selectRating}><SelectComponent type={'ratingsTo'} rating={true} placeholder={'To'}
                                                                      data={averages} value={averageLte}
+
                                                                      eventHandler={handleSetAverageLte}/>
                     </div>
                 </div>

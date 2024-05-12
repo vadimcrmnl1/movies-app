@@ -4,12 +4,31 @@
     min-height: 100vh;
     height: 100%;
 }
+
 .sidebar {
     flex-basis: 20%;
 }
+
 .movie {
     display: flex;
     justify-content: center;
     width: 100%;
+    min-width: 980px;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-width: 100%;
+    }
+    .sidebar {
+        flex-basis: 100%;
+    }
+    .movie {
+        width: 100%;
+        min-width: 100%;
+
+    }
 }

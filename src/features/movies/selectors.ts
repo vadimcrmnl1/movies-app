@@ -10,3 +10,5 @@ export const selectAverageGte = (state: AppRootStateType) => state.movies.params
 export const selectAverageLte = (state: AppRootStateType) => state.movies.params["vote_average.lte"]
 export const selectParams = (state: AppRootStateType) => state.movies.params
 export const selectMovie = (state: AppRootStateType) => state.movies.movie
+export const selectRatedMovies = (state: AppRootStateType) => state.movies.rated_movies
+
