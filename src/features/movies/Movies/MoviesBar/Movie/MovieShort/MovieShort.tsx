@@ -36,7 +36,6 @@ export const MovieShort: FC<MoviePropsType> = ({id, voteAverage, genre, image, t
                                 </NavLink>
                             </div>
                             <div>
-                                {/*<div className="fa-solid fa-star" style={{color: '#D5D6DC', fontSize: '23px'}}></div>*/}
                                 <ModalForm ratingCount={0} id={id} headerTitle={'Your rating'} title={title}/>
                             </div>
                         </div>
@@ -50,12 +49,9 @@ export const MovieShort: FC<MoviePropsType> = ({id, voteAverage, genre, image, t
                     <div className={s.genresContainer}>
                         <div className={s.year + ' ' + s.genre}>Genres</div>
                         {fullGenres && fullGenres.length
-                            ? <div className={s.year + ' ' + s.genreTitle}>{fullGenres.map(el => el.name).join(', ')}</div>
+                            ? <div
+                                className={s.year + ' ' + s.genreTitle}>{fullGenres.map(el => el.name).join(', ')}</div>
                             : <div className={s.year + ' ' + s.genreTitle}>...</div>}
-                        {/*{fullGenres && fullGenres.length && fullGenres.map((el, index) => {*/}
-                        {/*    return <div className={s.year + ' ' + s.genreTitle}*/}
-                        {/*                key={el.id}>{el.name}</div>*/}
-                        {/*})}*/}
                     </div>
                 </div>
             </div>
