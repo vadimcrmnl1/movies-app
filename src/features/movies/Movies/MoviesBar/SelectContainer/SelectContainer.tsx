@@ -125,7 +125,6 @@ const SelectContainer = () => {
     const handleSetSortBy = (id: string | null) => {
         dispatch(setSortByAC(id as string))
     }
-    debugger
     return (
         <div className={s.selectContainer}>
             <div className={s.selectFormContainer}>
