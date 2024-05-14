@@ -45,4 +45,5 @@ store.subscribe(() => saveToLocalStorage(store.getState()))
 export const useAppDispatch = () => useDispatch<AppThunkDispatch>()
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 
+// @ts-ignore
 window.localStorage.store = store

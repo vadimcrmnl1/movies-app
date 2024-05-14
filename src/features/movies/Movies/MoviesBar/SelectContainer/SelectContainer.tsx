@@ -26,9 +26,8 @@ const SelectContainer = () => {
     const genres = useSelector(selectGenres).map(el => {
         return {value: el.id.toString(), label: el.name}
     })
-    // const genres = useAppSelector(selectGenres).map(el => el.name)
     const genre = useAppSelector(selectGenre)
-    const year = useAppSelector(selectPrimaryReleaseYear)?.toString()
+    const year = useAppSelector(selectPrimaryReleaseYear)
     const averages = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0']
     const sortByArray = [
         {
@@ -91,9 +90,7 @@ const SelectContainer = () => {
     ]
     const sortBy = useAppSelector(selectSortBy)
     const averageGte = useAppSelector(selectAverageGte)
-    const averageLte = useAppSelector(selectAverageLte)?.toString()
-    console.log('genres', genres)
-    console.log('genre', genre)
+    const averageLte = useAppSelector(selectAverageLte)
     const createArrayYears = (currentYear: number) => {
         const start = currentYear;
         const end = currentYear - 50;
@@ -128,15 +125,16 @@ const SelectContainer = () => {
     const handleSetSortBy = (id: string | null) => {
         dispatch(setSortByAC(id as string))
     }
+    debugger
     return (
         <div className={s.selectContainer}>
             <div className={s.selectFormContainer}>
                 <div className={s.selectForm}><SelectComponent type={'genres'} rating={false} label={'Genres'}
                                                                placeholder={'Select genre'}
-                                                               data={genres} value={genre?.toString()}
+                                                               data={genres} value={genre ? genre.toString() : null}
                                                                eventHandler={handleSetGenre}/></div>
                 <div className={s.selectForm}><SelectComponent type={'releaseYear'} rating={false}
-                                                               label={'Release year'} value={year}
+                                                               label={'Release year'} value={year ? year.toString() : null}
                                                                placeholder={'Select release year'}
                                                                data={years} eventHandler={handleSetYear}/>
                 </div>
@@ -144,12 +142,12 @@ const SelectContainer = () => {
                 <div className={s.selectRatingForm}>
                     <div className={s.selectRating}><SelectComponent type={'ratingsFrom'} rating={true}
                                                                      label={'Ratings'} placeholder={'From'}
-                                                                     data={averages} value={averageGte?.toString()}
+                                                                     data={averages} value={averageGte ? averageGte.toString() : null}
 
                                                                      eventHandler={handleSetAverageGte}/>
                     </div>
                     <div className={s.selectRating}><SelectComponent type={'ratingsTo'} rating={true} placeholder={'To'}
-                                                                     data={averages} value={averageLte}
+                                                                     data={averages} value={averageLte ? averageLte.toString() : null}
 
                                                                      eventHandler={handleSetAverageLte}/>
                     </div>

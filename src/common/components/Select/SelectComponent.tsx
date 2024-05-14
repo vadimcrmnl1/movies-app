@@ -10,13 +10,12 @@ type SelectComponentProps = {
     rating?: boolean
     type?: 'genres' | 'releaseYear' | 'ratingsFrom' | 'ratingsTo' | 'sortBy'
     eventHandler: (id: string | null) => void
-    value: string | undefined | null
+    value: string | null
     error?: string
 }
 
 
 export const SelectComponent: FC<SelectComponentProps> = ({value, eventHandler, label, placeholder, data}) => {
-    console.log('value', value)
     return (
         <Select
             label={label}
