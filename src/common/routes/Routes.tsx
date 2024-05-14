@@ -4,17 +4,17 @@ import {MovieContainer, MoviesContainer, RatedMovies} from "../../features/movie
 import {ErrorPage} from "../components/ErrorPage/ErrorPage";
 
 export const PATH = {
-    // app: '/',
-    movies: '/',
-    ratedMovies: '/rated_movies',
-    movie: 'movie/:movie_id'
+    app: '/movies-app',
+    movies: '/movies-app/movies',
+    ratedMovies: '/movies-app/rated_movies',
+    movie: '/movies-app/movie/:movie_id'
 
 }
 
 const router = createBrowserRouter([
     {
 
-        path: PATH.movies,
+        path: PATH.app,
         element: <App />,
         errorElement: <ErrorPage/>,
         children: [
