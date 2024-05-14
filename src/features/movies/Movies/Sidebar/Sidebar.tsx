@@ -1,4 +1,3 @@
-import React from 'react';
 import s from './Sidebar.module.css'
 import logo from './../../../../common/images/sidebar_logo.png'
 import {NavLink} from "react-router-dom";

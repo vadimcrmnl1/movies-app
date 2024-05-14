@@ -1,6 +1,5 @@
 import {createBrowserRouter} from "react-router-dom";
 import {App} from "../../app/App";
-import React from "react";
 import {MovieContainer, MoviesContainer, RatedMovies} from "../../features/movies/MoviesContainer";
 import {ErrorPage} from "../components/ErrorPage/ErrorPage";
 

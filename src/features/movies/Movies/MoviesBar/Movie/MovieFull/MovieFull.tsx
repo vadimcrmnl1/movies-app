@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import YouTube from 'react-youtube';
 
 import s from './MovieFull.module.css'
@@ -14,19 +14,20 @@ import dateFormat from "dateformat"
 export const MovieFull = () => {
     const dispatch = useAppDispatch()
     const movie = useAppSelector(selectMovie)
-    const formatNum = n => n >= 1000 ? `${(n / 1000).toFixed(1)}К` : `${n}`;
+    const formatNum = (n: number) => n >= 1000 ? `${(n / 1000).toFixed(1)}К` : `${n}`;
     const movie_id = useParams().movie_id
     const genres = useAppSelector(selectGenres)
+    const genresMovieDetails = genres.map(el => el.id)
     const fullGenres = genres && genres.length && genres.filter(i => movie.genres && movie.genres.length && movie.genres.map(el => el.id).includes(i.id))
-    const duration = function (mins) {
-        let hours = Math.trunc(mins / 60);
-        let minutes = mins % 60;
+    const duration = function (mins: number) {
+        const hours = Math.trunc(mins / 60);
+        const minutes = mins % 60;
         return hours + 'h ' + minutes + 'm';
     }
 
 
     useEffect(() => {
-        dispatch(fetchMovieDetails(movie_id as Number))
+        dispatch(fetchMovieDetails(Number(movie_id)))
         dispatch(fetchGenres())
 
     }, [])
@@ -90,7 +91,7 @@ export const MovieFull = () => {
                         </div>
                     </div>
                     <div className={s.starBlock}>
-                        <ModalForm type={'full'} id={movie.id} headerTitle={'Your rating'} title={movie.title}/>
+                        <ModalForm genre={genresMovieDetails} image={movie.poster_path} year={movie.release_date} popularity={movie.popularity} voteCount={movie.vote_count} voteAverage={movie.vote_average} id={movie.id} headerTitle={'Your rating'} title={movie.title}/>
 
                     </div>
                 </div>

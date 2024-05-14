@@ -15,14 +15,8 @@ export const moviesApi = {
     getMovies(params: GetMoviesParamsType) {
         return instance.get('discover/movie', {params})
     },
-    getGenres(params) {
+    getGenres(params: { language: string }) {
         return instance.get('genre/movie/list', {params})
-    },
-    getRatedMovies(sessionId: string, params) {
-        return instance.get(`guest_session/${sessionId}/rated/movies`, params)
-    },
-    addRating(movie_id: number, params, rating) {
-        return instance.post(`movie/${movie_id}/rating`, rating, params)
     },
     getMovieDetails(movie_id: number, params: MovieRequestType) {
         return instance.get(`movie/${movie_id}`, {params})
@@ -32,16 +26,6 @@ export const authApi = {
     createGuestSession() {
         return instance.get<AxiosResponse<GuestSessionResponseType>>('authentication/guest_session/new')
     },
-    createRequestToken() {
-        return instance.get<AxiosResponse<RequestTokenResponseType>>('authentication/token/new')
-    },
-    createSession(request_token) {
-        return instance.post('authentication/session/new', {request_token})
-    },
-    acceptToken(request_token: string) {
-        return instance.get(`https://www.themoviedb.org/authenticate/${request_token}?redirect_to=http://localhost:5173/`)
-    }
-
 }
 
 
@@ -68,6 +52,18 @@ export type MoviesResponseResultsType = {
     vote_count: number
     rating?: number | null
 }
+export type RatedMoviesType = {
+    id: number
+    rating: number
+    genre_ids: number[]
+    popularity: number
+    poster_path: string
+    release_date: string
+    title: string
+    vote_average: number
+    vote_count: number
+
+}
 export type GetMoviesParamsType = {
     language: string
     with_genres: number | null
@@ -87,25 +83,16 @@ export type GetGenresChildrenType = {
     name: string
 }
 
-interface ImportMetaEnv {
-    readonly VITE_API_BASE_URL: string;
-    readonly VITE_API_KEY_VALUE: string;
-}
-
-interface ImportMeta {
-    readonly env: ImportMetaEnv
-}
-
 type GuestSessionResponseType = {
     success: boolean
     guest_session_id: string
     expires_at: string
 }
-type RequestTokenResponseType = {
-    success: boolean
-    request_token: string
-    expires_at: string
-}
+// type RequestTokenResponseType = {
+//     success: boolean
+//     request_token: string
+//     expires_at: string
+// }
 
 type MovieRequestType = {
     append_to_response: string
@@ -144,16 +131,16 @@ type MovieDetailsVideosType = {
     results: MovieDetailsVideosChildrenType[]
 }
 export type MovieDetailsVideosChildrenType = {
-	iso_639_1: string;
-	iso_3166_1: string;
-	name: string;
-	key: string;
-	site: string;
-	size: number;
-	type: string;
-	official: boolean;
-	published_at: string;
-	id: string;
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    key: string;
+    site: string;
+    size: number;
+    type: string;
+    official: boolean;
+    published_at: string;
+    id: string;
 }
 export type MovieDetailsTypeGenres = {
     id: number;

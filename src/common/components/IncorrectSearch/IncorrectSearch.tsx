@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import s from './IncorrectSearch.module.css'
 import st from './../../../features/movies/Movies/MoviesBar/Movie/MovieShort/MovieShort.module.css'
 import incorrectLogo from './../../images/incorrect_search_logo.png'

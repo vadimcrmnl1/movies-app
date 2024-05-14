@@ -1,6 +1,6 @@
 import {AppActionsType} from "./types";
 
-const appInitialState: AppInitialStateType = {
+const appInitialState = {
     isLoading: false,
     isFirstEnter: false
 }

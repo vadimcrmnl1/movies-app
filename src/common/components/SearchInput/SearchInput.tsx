@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import {FC, KeyboardEvent, useState} from 'react';
 import {Button, Input} from "@mantine/core";
 import s from './SearchInput.module.css'
 import {CiSearch} from "react-icons/ci";
@@ -9,7 +9,7 @@ type SearchInputPropsType = {
 }
 export const SearchInput: FC<SearchInputPropsType> = ({eventHandle}) => {
     const [value, setValue] = useState('');
-    const handlePressEnter = (e: KeyboardEvent) => {
+    const handlePressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.code === 'Enter') {
             eventHandle(value)
         }

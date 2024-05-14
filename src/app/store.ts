@@ -7,7 +7,6 @@ import {thunk} from 'redux-thunk'
 import {appReducer} from './app-reducer'
 import {AppThunkDispatch} from './types'
 import {moviesReducer} from "../features/movies/movies-reducer";
-import {authReducer} from "../features/auth/auth-reducer";
 
 function saveToLocalStorage (state : AppRootStateType) {
     try {
@@ -32,19 +31,18 @@ function loadFromLocalStorage () {
 const rootReducer = combineReducers({
     app: appReducer,
     movies: moviesReducer,
-    auth: authReducer
 
 })
+export type AppRootStateType = ReturnType<typeof rootReducer>
+
 const middlewareEnhancer = applyMiddleware<AppThunkDispatch, AppRootStateType>(thunk)
 
 const composedEnhancers = composeWithDevTools(middlewareEnhancer)
 
 export const store = legacy_createStore(rootReducer, loadFromLocalStorage(), composedEnhancers)
 store.subscribe(() => saveToLocalStorage(store.getState()))
-export type AppRootStateType = ReturnType<typeof rootReducer>
 
 export const useAppDispatch = () => useDispatch<AppThunkDispatch>()
 export const useAppSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
 
-// @ts-ignore
-window.store = store
+window.localStorage.store = store

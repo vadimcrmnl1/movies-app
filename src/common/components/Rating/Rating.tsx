@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react';
+import {FC, useState} from 'react';
 import s from "../ModalForm/ModalForm.module.css";
 
 type RatingPropsType = {

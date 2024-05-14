@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useAppSelector} from "../../../app/store";
-import {selectMovies, selectRatedMovies} from "../selectors";
+import {selectRatedMovies} from "../selectors";
 import s from './../Movies/MoviesBar/MoviesBar.module.css'
 import {MovieShort} from "../Movies/MoviesBar/Movie/MovieShort/MovieShort";
 import {IncorrectSearch} from "../../../common/components/IncorrectSearch/IncorrectSearch";
 import {Pagination} from "@mantine/core";
 import {useSearchParams} from "react-router-dom";
-import {MoviesResponseResultsType} from "../../../api/api";
+import {RatedMoviesType} from "../../../api/api";
 import {SearchInput} from "../../../common/components/SearchInput/SearchInput";
 
 function chunk<T>(array: T[], size: number): T[][] {
@@ -19,10 +19,10 @@ function chunk<T>(array: T[], size: number): T[][] {
 }
 
 export const RatedMoviesContainer = () => {
-    const movies = useAppSelector(selectMovies)
-    const ratedMovies = useAppSelector(selectRatedMovies).map(el => el.id)
-    const fullRatedMovies = movies.results.filter(i => ratedMovies.includes(i.id))
-    const data = chunk<MoviesResponseResultsType>(fullRatedMovies, 4)
+    const ratedMovies = useAppSelector(selectRatedMovies)
+    // const fullRatedMovies = movies.results.filter(i => ratedMovies.includes(i.id))
+    // const data = chunk<MoviesResponseResultsType>(fullRatedMovies, 4)
+    const data = chunk<RatedMoviesType>(ratedMovies, 4)
 
     const [searchParams, setSearchParams] = useSearchParams()
     const titleQuery = searchParams.get('title') || ''
@@ -30,6 +30,7 @@ export const RatedMoviesContainer = () => {
 
     const items = data[page - 1] && data[page - 1].length !== 0 && data[page - 1].filter(m => m.title.toLowerCase().includes(titleQuery.toLowerCase())).map(el => {
         return <MovieShort key={el.id}
+                           popularity={el.popularity}
                            image={el.poster_path}
                            title={el.title}
                            year={el.release_date}
@@ -38,8 +39,19 @@ export const RatedMoviesContainer = () => {
                            genre={el.genre_ids}
                            id={el.id}/>
     })
-    const findMovies = fullRatedMovies.filter(el => el.title.toLowerCase().includes(titleQuery.toLowerCase())).map(el => {
+    // const findMovies = fullRatedMovies.filter(el => el.title.toLowerCase().includes(titleQuery.toLowerCase())).map(el => {
+    //     return <MovieShort key={el.id}
+    //                        image={el.poster_path}
+    //                        title={el.title}
+    //                        year={el.release_date}
+    //                        voteCount={el.vote_count}
+    //                        voteAverage={el.vote_average}
+    //                        genre={el.genre_ids}
+    //                        id={el.id}/>
+    // })
+    const findMovies = ratedMovies.filter(el => el.title.toLowerCase().includes(titleQuery.toLowerCase())).map(el => {
         return <MovieShort key={el.id}
+                           popularity={el.popularity}
                            image={el.poster_path}
                            title={el.title}
                            year={el.release_date}
@@ -87,12 +99,12 @@ export const RatedMoviesContainer = () => {
                         {/*                       id={el.id}/>*/}
                         {/*})}*/}
                     </div>
-                    {fullRatedMovies.length >= 4 && !titleQuery && <div className={s.ratedPaginationBlock}>
+                    {ratedMovies.length >= 4 && !titleQuery && <div className={s.ratedPaginationBlock}>
                         <Pagination total={data.length}
                                     value={page} onChange={(value: number) => handleSetPage(value)}
                                     withControls withEdges={false}/>
                     </div>}
-                    {fullRatedMovies.length === 0 && <div className={s.emptyRatedMoviesBlock}>
+                    {ratedMovies.length === 0 && <div className={s.emptyRatedMoviesBlock}>
                         <IncorrectSearch type={'ratedMovies'} title={'You haven\'t rated any films yet'}/>
                     </div>}
                 </div>

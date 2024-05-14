@@ -1,4 +1,3 @@
-import React from 'react'
 import s from './MoviesContainer.module.css'
 import {Sidebar} from "./Movies/Sidebar/Sidebar";
 import {MovieFull} from "./Movies/MoviesBar/Movie/MovieFull/MovieFull";

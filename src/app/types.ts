@@ -3,7 +3,6 @@ import {ThunkAction, ThunkDispatch} from "redux-thunk";
 import {AnyAction} from "redux";
 import {AppRootStateType} from "./store";
 import {MoviesActionsType} from "../features/movies/types";
-import {AuthActionsType} from "../features/auth/types";
 
 export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never
 export type AppThunkDispatch = ThunkDispatch<AppRootStateType, unknown, AllReducersActionsType>
@@ -14,7 +13,7 @@ export type AppThunk<A extends AnyAction, ReturnType = void> = ThunkAction<
     A
     >
 export type AllReducersActionsType =
-    | AppActionsType | MoviesActionsType | AuthActionsType
+    | AppActionsType | MoviesActionsType
 
 export type AppActionsType = ReturnType<InferValueTypes<typeof actions>>
 

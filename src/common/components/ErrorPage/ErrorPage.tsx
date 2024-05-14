@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import {FC} from 'react';
 import s from './ErrorPage.module.css'
 import st from './../../../features/movies/Movies/Sidebar/Sidebar.module.css'
 import logo from "../../images/error_page_sidebar_logo.png";

@@ -1,4 +1,3 @@
-import React from 'react';
 import s from "../MoviesBar.module.css";
 import {SelectComponent} from "../../../../../common/components/Select/SelectComponent";
 import {ButtonReset} from "../../../../../common/components/Button/ButtonComponent";
@@ -27,8 +26,9 @@ const SelectContainer = () => {
     const genres = useSelector(selectGenres).map(el => {
         return {value: el.id.toString(), label: el.name}
     })
+    // const genres = useAppSelector(selectGenres).map(el => el.name)
     const genre = useAppSelector(selectGenre)
-    const year = useAppSelector(selectPrimaryReleaseYear)
+    const year = useAppSelector(selectPrimaryReleaseYear)?.toString()
     const averages = ['10', '9', '8', '7', '6', '5', '4', '3', '2', '1', '0']
     const sortByArray = [
         {
@@ -91,8 +91,9 @@ const SelectContainer = () => {
     ]
     const sortBy = useAppSelector(selectSortBy)
     const averageGte = useAppSelector(selectAverageGte)
-    const averageLte = useAppSelector(selectAverageLte)
-
+    const averageLte = useAppSelector(selectAverageLte)?.toString()
+    console.log('genres', genres)
+    console.log('genre', genre)
     const createArrayYears = (currentYear: number) => {
         const start = currentYear;
         const end = currentYear - 50;
@@ -103,17 +104,17 @@ const SelectContainer = () => {
         return arr;
     }
     const years = createArrayYears(2024).map(el => el.toString())
-    const handleSetGenre = (id: string) => {
-        dispatch(setGenreAC(id as Number))
+    const handleSetGenre = (id: string | null) => {
+        dispatch(setGenreAC(Number(id)))
     }
-    const handleSetYear = (id: string) => {
-        dispatch(setYearAC(id as Number))
+    const handleSetYear = (id: string | null) => {
+        dispatch(setYearAC(Number(id)))
     }
-    const handleSetAverageGte = (id: string) => {
-        dispatch(setVoteAverageGteAC(id as Number))
+    const handleSetAverageGte = (id: string | null) => {
+        dispatch(setVoteAverageGteAC(Number(id)))
     }
-    const handleSetAverageLte = (id: string) => {
-        dispatch(setVoteAverageLteAC(id as Number))
+    const handleSetAverageLte = (id: string | null) => {
+        dispatch(setVoteAverageLteAC(Number(id)))
     }
     const handleResetFilters = () => {
         dispatch(setResetFiltersAC({
@@ -124,15 +125,15 @@ const SelectContainer = () => {
             sort_by: null, ['vote_average.lte']: null, ['vote_average.gte']: null
         }))
     }
-    const handleSetSortBy = (id: string) => {
-        dispatch(setSortByAC(id))
+    const handleSetSortBy = (id: string | null) => {
+        dispatch(setSortByAC(id as string))
     }
     return (
         <div className={s.selectContainer}>
             <div className={s.selectFormContainer}>
                 <div className={s.selectForm}><SelectComponent type={'genres'} rating={false} label={'Genres'}
                                                                placeholder={'Select genre'}
-                                                               data={genres} genre={genre} value={genre}
+                                                               data={genres} value={genre?.toString()}
                                                                eventHandler={handleSetGenre}/></div>
                 <div className={s.selectForm}><SelectComponent type={'releaseYear'} rating={false}
                                                                label={'Release year'} value={year}
@@ -143,7 +144,7 @@ const SelectContainer = () => {
                 <div className={s.selectRatingForm}>
                     <div className={s.selectRating}><SelectComponent type={'ratingsFrom'} rating={true}
                                                                      label={'Ratings'} placeholder={'From'}
-                                                                     data={averages} value={averageGte}
+                                                                     data={averages} value={averageGte?.toString()}
 
                                                                      eventHandler={handleSetAverageGte}/>
                     </div>

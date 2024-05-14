@@ -1,12 +1,18 @@
-import {GetGenresType, GetMoviesParamsType, MovieDetailsType, MoviesResponseResultsType} from "../../api/api";
+import {
+    GetGenresChildrenType,
+    GetMoviesParamsType,
+    MovieDetailsType,
+    MoviesResponseType,
+    RatedMoviesType
+} from "../../api/api";
 
-export const fetchMoviesAC = (movies: MoviesResponseResultsType[]) => ({
+export const fetchMoviesAC = (movies: MoviesResponseType) => ({
     type: 'MOVIES/FETCH_MOVIES',
     payload: {movies}
 } as const)
-export const addRatingAC = (id: number | null, rating: number | null) => ({
+export const addRatingAC = (movie: RatedMoviesType, id: number, rating: number) => ({
     type: 'MOVIES/ADD_RATING',
-    payload: {id, rating}
+    payload: {movie, id, rating}
 } as const)
 export const removeRatingAC = (id: number,) => ({
     type: 'MOVIES/REMOVE_RATING',
@@ -14,7 +20,7 @@ export const removeRatingAC = (id: number,) => ({
 
 } as const)
 
-export const fetchGenresAC = (genres: GetGenresType) => ({
+export const fetchGenresAC = (genres: GetGenresChildrenType[]) => ({
     type: 'MOVIES/FETCH_GENRES',
     payload: {genres}
 } as const)

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import  {useEffect} from 'react';
 import s from './MoviesBar.module.css'
 import {useAppDispatch, useAppSelector} from "../../../../app/store";
 import {fetchGenres, fetchMovies} from "../../movies-reducer";
