@@ -1,4 +1,4 @@
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 
 const instance = axios.create({
     baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -22,11 +22,7 @@ export const moviesApi = {
         return instance.get(`movie/${movie_id}`, {params})
     }
 }
-export const authApi = {
-    createGuestSession() {
-        return instance.get<AxiosResponse<GuestSessionResponseType>>('authentication/guest_session/new')
-    },
-}
+
 
 
 export type MoviesResponseType = {
@@ -72,8 +68,6 @@ export type GetMoviesParamsType = {
     ['vote_average.lte']: number | null
     sort_by: string | null
     page: number
-
-
 }
 export type GetGenresType = {
     genres: GetGenresChildrenType[]
@@ -82,17 +76,6 @@ export type GetGenresChildrenType = {
     id: number
     name: string
 }
-
-type GuestSessionResponseType = {
-    success: boolean
-    guest_session_id: string
-    expires_at: string
-}
-// type RequestTokenResponseType = {
-//     success: boolean
-//     request_token: string
-//     expires_at: string
-// }
 
 type MovieRequestType = {
     append_to_response: string
