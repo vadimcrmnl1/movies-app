@@ -16,6 +16,7 @@ export const MovieFull = () => {
     const movie = useAppSelector(selectMovie)
     const formatNum = (n: number) => n >= 1000 ? `${(n / 1000).toFixed(1)}К` : `${n}`;
     const movie_id = useParams().movie_id
+    console.log(movie_id)
     const genres = useAppSelector(selectGenres)
     const genresMovieDetails = genres.map(el => el.id)
     const fullGenres = genres && genres.length && genres.filter(i => movie.genres && movie.genres.length && movie.genres.map(el => el.id).includes(i.id))
