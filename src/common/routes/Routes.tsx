@@ -14,18 +14,13 @@ export const PATH = {
 const router = createBrowserRouter([
     {
 
-        path: '/',
+        path: PATH.app,
         element: <App />,
         errorElement: <ErrorPage/>,
         children: [
-            {
-                errorElement: <ErrorPage/>,
-                children: [
-                    {path: PATH.ratedMovies, element: <RatedMovies/>},
-                    {path: PATH.movies, element: <MoviesContainer/>},
-                    {path: PATH.movie, element: <MovieContainer />}
-                ]
-            }
+            {path: PATH.ratedMovies, element: <RatedMovies/>},
+            {path: PATH.movies, element: <MoviesContainer/>},
+            {path: PATH.movie, element: <MovieContainer />}
         ],
 
 
