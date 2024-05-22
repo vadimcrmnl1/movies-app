@@ -1,9 +1,9 @@
 import "@mantine/core/styles.css";
 import {MantineProvider} from "@mantine/core";
-import {theme} from "../theme";
+import {theme} from "../theme.ts";
 import {useSelector} from "react-redux";
-import {selectIsLoading} from "./selectors";
-import {LoaderComponent} from "../common/components/Loader/Loader";
+import {selectIsLoading} from "./selectors.ts";
+import {LoaderComponent} from "../common/components/Loader/Loader.tsx";
 import s from '../app/App.module.css'
 import {Navigate, Outlet} from "react-router-dom";
 
