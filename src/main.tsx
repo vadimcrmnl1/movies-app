@@ -3,9 +3,12 @@ import {Provider} from "react-redux";
 import {store} from "./app/store";
 import {RouterProvider} from "react-router-dom";
 import router from "./common/routes/Routes";
+import React from "react";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-    <Provider store={store}>
-        <RouterProvider router={router}/>
-    </Provider>
+    <React.StrictMode>
+        <Provider store={store}>
+            <RouterProvider router={router}/>
+        </Provider>
+    </React.StrictMode>
 );

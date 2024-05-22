@@ -13,7 +13,7 @@ export const Sidebar = () => {
             </div>
             <div className={s.buttonContainer}>
                 <NavLink style={{height: '42px'}}
-                    to={PATH.movies}
+                    to={PATH.app}
                     className={({ isActive, isPending }) =>
                         isPending ? s.linkPending : isActive ? s.linkActive : s.linkPending
                     }

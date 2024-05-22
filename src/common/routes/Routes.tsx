@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         errorElement: <ErrorPage/>,
         children: [
             {path: PATH.ratedMovies, element: <RatedMovies/>},
-            {path: PATH.movies, element: <MoviesContainer/>},
+            {path: PATH.app, element: <MoviesContainer/>},
             {path: PATH.movie, element: <MovieContainer />}
         ],
 
