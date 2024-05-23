@@ -13,7 +13,6 @@ export const PATH = {
 
 const router = createBrowserRouter([
     {
-
         path: PATH.app,
         element: <App />,
         errorElement: <ErrorPage/>,
@@ -22,9 +21,6 @@ const router = createBrowserRouter([
             {path: PATH.movies, element: <MoviesContainer/>},
             {path: PATH.movie, element: <MovieContainer />}
         ],
-
-
-
     }
 ])
 export default router
