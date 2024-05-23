@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml+png" href="/movies-app/favicon_new.png" />
+    <meta
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width, user-scalable=no"
+    />
+    <title>Movies app</title>
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+                  .slice(1)
+                  .split("&")
+                  .map(function (s) {
+                    return s.replace(/~and~/g, "&");
+                  })
+                  .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+    <script type="module" crossorigin src="/movies-app/assets/index-ZjCTBttC.js"></script>
+    <link rel="stylesheet" crossorigin href="/movies-app/assets/index-SJ6lA33U.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://kit.fontawesome.com/cb24daff65.js" crossorigin="anonymous"></script>
+  </body>
+</html>
