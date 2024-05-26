@@ -46,6 +46,9 @@ jobs:
         with:
           # Upload dist folder
           path: './build'
+          folder: build
+          mime: |
+            .js application/javascript
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
