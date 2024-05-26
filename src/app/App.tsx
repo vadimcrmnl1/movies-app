@@ -10,12 +10,13 @@ import {Navigate, Outlet} from "react-router-dom";
 export const App = () => {
     const isLoading = useSelector(selectIsLoading)
 
-    Navigate({to: '/movies-app/movies'})
+    // Navigate({to: '/movies-app/movies'})
     return <MantineProvider theme={theme}>
         {isLoading && <LoaderComponent/>}
         <div className={s.wrapper}>
             <div className={s.container}>
-                <Outlet/>
+                {/*<Outlet/>*/}
+                Hello world
             </div>
         </div>
     </MantineProvider>;
