@@ -7,13 +7,13 @@ import {PATH} from "../../../../common/routes/Routes";
 export const Sidebar = () => {
        return (
         <div className={s.wrapper}>
-            <div className={s.logoContainer}>
-                <img src={logo} alt={'logo'}/>
-                <div>ArrowFlicks</div>
-            </div>
+                <div className={s.logoContainer}>
+                    <img src={logo} alt={'logo'}/>
+                    <div>ArrowFlicks</div>
+                </div>
             <div className={s.buttonContainer}>
                 <NavLink style={{height: '42px'}}
-                    to={PATH.movies}
+                         to={PATH.movies}
                     className={({ isActive, isPending }) =>
                         isPending ? s.linkPending : isActive ? s.linkActive : s.linkPending
                     }
