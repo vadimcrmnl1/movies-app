@@ -119,7 +119,8 @@ const SelectContainer = () => {
             language: 'en-Us',
             with_genres: null,
             primary_release_year: null,
-            sort_by: null, ['vote_average.lte']: null, ['vote_average.gte']: null
+            sort_by: null,
+            ['vote_average.lte']: null, ['vote_average.gte']: null
         }))
     }
     const handleSetSortBy = (id: string | null) => {
@@ -152,6 +153,7 @@ const SelectContainer = () => {
                     </div>
                 </div>
                 <div className={s.selectResetForm}><ButtonReset title={'Reset filters'}
+                                                                genre={genre} year={year} averageGte={averageGte} averageLte={averageLte}
                                                                 eventHandle={handleResetFilters}/></div>
 
             </div>

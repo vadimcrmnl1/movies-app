@@ -37,10 +37,8 @@ export const ModalForm: FC<ModalFormPropsType> = ({
                                                   }) => {
     const dispatch = useAppDispatch()
     const ratingMovies = useAppSelector(selectRatedMovies).filter(el => el.id === id)
-    // const ratingMovies = useAppSelector(selectRatedMovies)
     const [opened, {open, close}] = useDisclosure(false);
     const [rating, setRating] = useState(ratingMovies.length && ratingMovies[0].rating)
-    // const [rating, setRating] = useState(0)
     const handleAddRating = () => {
         const movie = {
             id: id,
@@ -61,17 +59,21 @@ export const ModalForm: FC<ModalFormPropsType> = ({
         dispatch(removeRatingAC(id))
         close()
     }
+    const handleOnClose = () => {
+        setRating(0)
+        close()
+    }
 
     return (
         <>
             <Modal radius={8} classNames={{title: s.headerTitle, close: s.closeButton}} title={headerTitle}
-                   opened={opened} onClose={close} centered>
+                   opened={opened} onClose={handleOnClose} centered>
                 <div className={s.wrapper}>
                     <div className={s.title}>{title}</div>
                     <Rating ratingCount={ratingMovies.length && ratingMovies[0].rating} eventHandle={setRating}/>
                     <div className={s.buttonBlock}>
                         <ButtonModalSave eventHandle={handleAddRating} type={'save'} title={'Save'}/>
-                        <ButtonModalSave eventHandle={handleRemoveRating} type={'remove'} title={'Remove rating'}/>
+                        <ButtonModalSave rating={ratingMovies.length && ratingMovies[0].rating} eventHandle={handleRemoveRating} type={'remove'} title={'Remove rating'}/>
 
                     </div>
                 </div>

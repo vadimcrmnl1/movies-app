@@ -100,7 +100,7 @@ export const RatedMoviesContainer = () => {
                         {/*})}*/}
                     </div>
                     {ratedMovies.length >= 4 && !titleQuery && <div className={s.ratedPaginationBlock}>
-                        <Pagination total={data.length}
+                        <Pagination total={data.length} color="#9854F6"
                                     value={page} onChange={(value: number) => handleSetPage(value)}
                                     withControls withEdges={false}/>
                     </div>}
