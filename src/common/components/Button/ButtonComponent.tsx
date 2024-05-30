@@ -7,10 +7,10 @@ type ButtonComponentProps = {
     eventHandle?: () => void
     type?: 'save' | 'remove'
     rating?: number | null
-    genre: number | null
-    year: number | null
-    averageGte: number | null
-    averageLte: number | null
+    genre?: number | null
+    year?: number | null
+    averageGte?: number | null
+    averageLte?: number | null
 }
 
 export const ButtonReset: FC<ButtonComponentProps> = ({genre, year, averageGte, averageLte, title, eventHandle}) => {

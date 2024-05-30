@@ -20,14 +20,10 @@ function chunk<T>(array: T[], size: number): T[][] {
 
 export const RatedMoviesContainer = () => {
     const ratedMovies = useAppSelector(selectRatedMovies)
-    // const fullRatedMovies = movies.results.filter(i => ratedMovies.includes(i.id))
-    // const data = chunk<MoviesResponseResultsType>(fullRatedMovies, 4)
     const data = chunk<RatedMoviesType>(ratedMovies, 4)
-
     const [searchParams, setSearchParams] = useSearchParams()
     const titleQuery = searchParams.get('title') || ''
     const [page, setPage] = useState(1)
-
     const items = data[page - 1] && data[page - 1].length !== 0 && data[page - 1].filter(m => m.title.toLowerCase().includes(titleQuery.toLowerCase())).map(el => {
         return <MovieShort key={el.id}
                            popularity={el.popularity}
@@ -39,16 +35,6 @@ export const RatedMoviesContainer = () => {
                            genre={el.genre_ids}
                            id={el.id}/>
     })
-    // const findMovies = fullRatedMovies.filter(el => el.title.toLowerCase().includes(titleQuery.toLowerCase())).map(el => {
-    //     return <MovieShort key={el.id}
-    //                        image={el.poster_path}
-    //                        title={el.title}
-    //                        year={el.release_date}
-    //                        voteCount={el.vote_count}
-    //                        voteAverage={el.vote_average}
-    //                        genre={el.genre_ids}
-    //                        id={el.id}/>
-    // })
     const findMovies = ratedMovies.filter(el => el.title.toLowerCase().includes(titleQuery.toLowerCase())).map(el => {
         return <MovieShort key={el.id}
                            popularity={el.popularity}
@@ -67,15 +53,15 @@ export const RatedMoviesContainer = () => {
         setSearchParams({title: title})
     }
 
-   useEffect(() => {
-       if (data[page - 1] && data[page - 1].length == 0) {
-           setPage(page - 1)
-       } else {
-           setPage(1)
-       }
+    useEffect(() => {
+        if (data[page - 1] && data[page - 1].length == 0) {
+            setPage(page - 1)
+        } else {
+            setPage(1)
+        }
 
 
-   }, [data[page - 1] && data[page - 1].length === 0])
+    }, [data[page - 1] && data[page - 1].length === 0])
 
     return (
         <div className={s.wrapper}>
@@ -87,17 +73,6 @@ export const RatedMoviesContainer = () => {
                     </div>}
                     <div className={s.moviesContainer}>
                         {titleQuery === '' ? ratedMovies.length !== 0 && items : findMovies}
-                        {/*{items}*/}
-                        {/*{ratedMovies && fullRatedMovies.map((el, index) => {*/}
-                        {/*    return <MovieShort key={el.id}*/}
-                        {/*                       image={el.poster_path}*/}
-                        {/*                       title={el.title}*/}
-                        {/*                       year={el.release_date}*/}
-                        {/*                       voteCount={el.vote_count}*/}
-                        {/*                       voteAverage={el.vote_average}*/}
-                        {/*                       genre={el.genre_ids}*/}
-                        {/*                       id={el.id}/>*/}
-                        {/*})}*/}
                     </div>
                     {ratedMovies.length >= 4 && !titleQuery && <div className={s.ratedPaginationBlock}>
                         <Pagination total={data.length} color="#9854F6"
