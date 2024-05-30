@@ -5,15 +5,19 @@ import {useSelector} from "react-redux";
 import {selectIsLoading} from "./selectors.ts";
 import {LoaderComponent} from "../common/components/Loader/Loader.tsx";
 import s from '../app/App.module.css'
-import {Navigate, Outlet} from "react-router-dom";
+import {Navigate, Outlet, useLocation} from "react-router-dom";
 
 export const App = () => {
+    const location = useLocation()
+
     const isLoading = useSelector(selectIsLoading)
 
-    Navigate({to: '/movies'})
+
+    // Navigate({to: '/movies'})
     return <MantineProvider theme={theme}>
         {isLoading && <LoaderComponent/>}
         <div className={s.wrapper}>
+            <Navigate to={location.pathname === '/' ? '/movies' : location.pathname}/>
             <div className={s.container}>
                 <Outlet/>
             </div>
