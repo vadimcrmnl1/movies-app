@@ -4,10 +4,10 @@ import {MovieContainer, MoviesContainer, RatedMovies} from "../../features/movie
 import {ErrorPage} from "../components/ErrorPage/ErrorPage";
 
 export const PATH = {
-    app: '/movies-app/',
-    movies: '/movies-app/movies',
-    ratedMovies: '/movies-app/rated_movies',
-    movie: '/movies-app/movie/:movie_id'
+    app: '/',
+    movies: 'movies',
+    ratedMovies: 'rated_movies',
+    movie: 'movie/:movie_id'
 
 }
 
