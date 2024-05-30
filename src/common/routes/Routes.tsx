@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom";
+import {createHashRouter} from "react-router-dom";
 import {App} from "../../app/App";
 import {MovieContainer, MoviesContainer, RatedMovies} from "../../features/movies/MoviesContainer";
 import {ErrorPage} from "../components/ErrorPage/ErrorPage";
@@ -11,7 +11,7 @@ export const PATH = {
 
 }
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: PATH.app,
         element: <App />,
@@ -23,4 +23,16 @@ const router = createBrowserRouter([
         ],
     }
 ])
+// const router = createBrowserRouter([
+//     {
+//         path: PATH.app,
+//         element: <App />,
+//         errorElement: <ErrorPage/>,
+//         children: [
+//             {path: PATH.ratedMovies, element: <RatedMovies/>},
+//             {path: PATH.movies, element: <MoviesContainer/>},
+//             {path: PATH.movie, element: <MovieContainer />}
+//         ],
+//     }
+// ])
 export default router
