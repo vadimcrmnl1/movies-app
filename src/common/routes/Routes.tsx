@@ -5,9 +5,9 @@ import {ErrorPage} from "../components/ErrorPage/ErrorPage";
 
 export const PATH = {
     app: '/',
-    movies: 'movies',
-    ratedMovies: 'rated_movies',
-    movie: 'movie/:movie_id'
+    movies: '/movies',
+    ratedMovies: '/rated_movies',
+    movie: '/movie/:movie_id'
 
 }
 

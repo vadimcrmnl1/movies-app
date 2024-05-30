@@ -31,7 +31,7 @@ export const MovieShort: FC<MoviePropsType> = ({popularity,id, voteAverage, genr
                     <div className={s.titleContainer}>
                         <div className={s.titleBlock}>
                             <div className={s.title}>
-                                <NavLink to={`/movies-app/movie/${id}`} className={s.title}>
+                                <NavLink to={`/movie/${id}`} className={s.title}>
                                     {title}
                                 </NavLink>
                             </div>
