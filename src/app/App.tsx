@@ -17,7 +17,7 @@ export const App = () => {
     return <MantineProvider theme={theme}>
         {isLoading && <LoaderComponent/>}
         <div className={s.wrapper}>
-            <Navigate to={location.pathname === '/' ? '/movies' : location.pathname}/>
+            <Navigate to={location.pathname === '/' ? '/movies' : location.pathname} replace={true}/>
             <div className={s.container}>
                 <Outlet/>
             </div>
