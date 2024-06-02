@@ -15,6 +15,7 @@ import {
 import {MovieShort} from "./Movie/MovieShort/MovieShort";
 import {PaginationComponent} from "../../../../common/components/Pagination/PaginationComponent";
 import {IncorrectSearch} from "../../../../common/components/IncorrectSearch/IncorrectSearch";
+import {setNetworkError} from "../../../../app/actions.ts";
 
 export const MoviesBar = () => {
     const dispatch = useAppDispatch()
@@ -25,7 +26,9 @@ export const MoviesBar = () => {
     const averageGte = useAppSelector(selectAverageGte)
     const averageLte = useAppSelector(selectAverageLte)
     const sortBy = useAppSelector(selectSortBy)
+
     useEffect(() => {
+        dispatch(setNetworkError(''))
         dispatch(fetchMovies())
         dispatch(fetchGenres())
 

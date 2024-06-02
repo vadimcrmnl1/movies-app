@@ -1,0 +1,63 @@
+.root {
+    position: fixed;
+    z-index: 99;
+    left: 35%;
+    bottom: 35%;
+    min-width: 200px;
+    width: 30%;
+    min-height: 120px;
+    height: 20%;
+    background-color: #FAB005;
+    border: 2px solid black;
+    border-radius: 8px;
+    display: flex;
+
+}
+.wrapper {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.icon {
+    width: 40px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.label {
+    color: #000000;
+    font-size: 22px;
+}
+
+.message {
+    font-size: 18px;
+    text-align: center;
+}
+
+.closeButton {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    color: black;
+}
+.closeButton:hover {
+    background-color: #eeeeee;
+}
+
+@media screen and (max-width: 600px) {
+    .root {
+        width: 80%;
+        left: 10%;
+    }
+    .label {
+        font-size: 18px;
+    }
+    .message {
+        font-size: 16px;
+    }
+}

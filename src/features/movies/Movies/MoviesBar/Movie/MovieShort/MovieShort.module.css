@@ -6,7 +6,10 @@
     border-radius: 12px;
 
 }
-
+.redirect {
+    display: block;
+    height: 100%;
+}
 .container {
     margin: 20px;
     display: flex;

@@ -16,17 +16,39 @@
     height: 42px;
     border: 1px solid #9854F6;
 }
+.input:hover {
+    height: 42px;
+    border: 1px solid #9854F6;
+}
 .ratingRightSection {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 25px;
 }
-
+.dropdown {
+    border-radius: 8px;
+}
+.options {
+    border-radius: 10px;
+    font-size: 23px;
+}
+.option::after {
+    background-color: #9854F6;
+    border-radius: 8px;
+}
+.optionChecked {
+    background-color: #9854F6;
+    border-radius: 8px;
+}
+.option:hover {
+    background-color: #F2EBF9;
+    border-radius: 8px;
+}
 .error {
     /*height: 40px;*/
     color: red;
-    /*position: absolute;*/
+    position: absolute;
     margin-bottom: 10px;
 }
 @media screen and (max-width: 600px) {

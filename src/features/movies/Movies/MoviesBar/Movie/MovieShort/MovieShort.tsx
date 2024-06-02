@@ -4,7 +4,7 @@ import {useAppSelector} from "../../../../../../app/store";
 import {selectGenres} from "../../../../selectors";
 import noImage from './../../../../../../common/images/no_image_logo.png'
 import {ModalForm} from "../../../../../../common/components/ModalForm/ModalForm";
-import {NavLink} from "react-router-dom";
+import {Navigate, NavLink} from "react-router-dom";
 
 type MoviePropsType = {
     image: string
@@ -23,11 +23,16 @@ export const MovieShort: FC<MoviePropsType> = ({popularity,id, voteAverage, genr
     const fullGenres = genres && genres.length && genres.filter(i => genre && genre.length && genre.includes(i.id))
     return (
         <div className={s.wrapper}>
-            <div className={s.container}>
+
+            <div className={s.container} onClick={() => <Navigate to={`/movie/${id}`}/>}>
                 <div className={s.imageContainer}>
-                    <img src={image ? `https://image.tmdb.org/t/p/w500${image}` : noImage} alt="picture"/>
+                    <NavLink to={`/movie/${id}`}>
+                        <img src={image ? `https://image.tmdb.org/t/p/w500${image}` : noImage} alt="picture"/>
+                    </NavLink>
+
                 </div>
                 <div className={s.movieContainer}>
+
                     <div className={s.titleContainer}>
                         <div className={s.titleBlock}>
                             <div className={s.title}>
@@ -36,7 +41,9 @@ export const MovieShort: FC<MoviePropsType> = ({popularity,id, voteAverage, genr
                                 </NavLink>
                             </div>
                             <div>
-                                <ModalForm id={id} headerTitle={'Your rating'} title={title} image={image} year={year} popularity={popularity} genre={genre} voteAverage={voteAverage} voteCount={voteCount}/>
+                                <ModalForm id={id} headerTitle={'Your rating'} title={title} image={image} year={year}
+                                           popularity={popularity} genre={genre} voteAverage={voteAverage}
+                                           voteCount={voteCount}/>
                             </div>
                         </div>
                         <div className={s.year}>{year && year.slice(0, 4)}</div>

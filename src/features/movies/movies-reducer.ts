@@ -3,7 +3,8 @@ import {
     GetMoviesParamsType,
     MovieDetailsType,
     moviesApi,
-    MoviesResponseResultsType, RatedMoviesType
+    MoviesResponseResultsType,
+    RatedMoviesType
 } from "../../api/api";
 import {MoviesActionsType} from "./types";
 import {AllReducersActionsType, AppThunk} from "../../app/types";
@@ -75,11 +76,18 @@ export const moviesReducer = (state: MoviesInitialStateType = moviesInitialState
 export const fetchMovies = (): AppThunk<AllReducersActionsType> => async (dispatch, getState) => {
     dispatch(appActions.setAppIsLoadingAC(true))
     const params: GetMoviesParamsType = {...getState().movies.params}
-    console.log('params', params)
+    // @ts-ignore
+    if (params["vote_average.gte"] > params["vote_average.lte"]) {
+        if (params["vote_average.lte"] !== null) {
+            dispatch(appActions.setError('Incorrect type'))
+
+        }
+    }
     try {
         const res = await moviesApi.getMovies(params)
         dispatch(moviesActions.fetchMoviesAC(res.data))
-    } catch (e) {
+    } catch (e: any) {
+        dispatch(appActions.setNetworkError(e.message))
         console.error('error', e)
     } finally {
         dispatch(appActions.setAppIsLoadingAC(false))
@@ -110,7 +118,8 @@ export const fetchMovieDetails = (id: number): AppThunk<AllReducersActionsType> 
     try {
         const res = await moviesApi.getMovieDetails(id, params)
         dispatch(moviesActions.setMovieDetailsAC(res.data))
-    } catch (e) {
+    } catch (e: any) {
+        dispatch(appActions.setNetworkError(e.message))
         console.error(e)
     } finally {
         dispatch(appActions.setAppIsLoadingAC(false))

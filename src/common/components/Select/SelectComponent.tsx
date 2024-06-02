@@ -1,8 +1,7 @@
 import {FC, useState} from "react";
 import s from './SelectComponent.module.css'
 import {Select} from "@mantine/core";
-import {SlArrowDown} from "react-icons/sl";
-import {SlArrowUp} from "react-icons/sl";
+import {SlArrowDown, SlArrowUp} from "react-icons/sl";
 
 type SelectComponentProps = {
     label?: string
@@ -16,11 +15,20 @@ type SelectComponentProps = {
 }
 
 
-export const SelectComponent: FC<SelectComponentProps> = ({type, value, eventHandler, label, placeholder, data}) => {
+export const SelectComponent: FC<SelectComponentProps> = ({error, type, value, eventHandler, label, placeholder, data}) => {
     const [focus, setFocus] = useState<boolean>(false)
+
     return (
         <Select
-            classNames={{input: focus ? s.inputFocus : s.input, label: s.label, error: s.error}}
+            classNames={{
+                input: focus ? s.inputFocus : s.input,
+                label: s.label,
+                error: s.error,
+                options: s.options,
+                option: s.option,
+                dropdown: s.dropdown
+            }}
+
             label={label}
             rightSection={type !== 'ratingsTo' && type !== 'ratingsFrom' ? <SlArrowDown size={16}/>
                 :
@@ -29,12 +37,15 @@ export const SelectComponent: FC<SelectComponentProps> = ({type, value, eventHan
                     <SlArrowDown size={10}/>
                 </div>}
             placeholder={placeholder}
+            withCheckIcon={false}
             onFocus={() => setFocus(true)}
             onBlur={() => setFocus(false)}
             data={data}
-            value={type === 'sortBy' && !value ? 'popularity.desc' : value}
+            value={value}
             onChange={(id) => eventHandler(id)}
             radius={8}
+            error={error}
         />
+
     );
 }

@@ -21,10 +21,12 @@ import {
 } from "../../../selectors";
 import {useSearchParams} from "react-router-dom";
 import {useEffect} from "react";
+import {selectError} from "../../../../../app/selectors.ts";
+import {setError} from "../../../../../app/actions.ts";
 
 const SelectContainer = () => {
     const dispatch = useAppDispatch()
-
+    const error = useAppSelector(selectError)
     const genres = useSelector(selectGenres).map(el => {
         return {value: el.id.toString(), label: el.name}
     })
@@ -105,7 +107,7 @@ const SelectContainer = () => {
 
     const years = createArrayYears(2024).map(el => el.toString())
     const [searchParams, setSearchParams] = useSearchParams()
-    const sortQuery = searchParams.get('sortBy') || ''
+    const sortQuery = searchParams.get('sortBy') || 'popularity.desc'
     const handleSetGenre = (id: string | null) => {
         dispatch(setGenreAC(Number(id)))
     }
@@ -114,9 +116,11 @@ const SelectContainer = () => {
     }
     const handleSetAverageGte = (id: string | null) => {
         dispatch(setVoteAverageGteAC(Number(id)))
+        dispatch(setError(''))
     }
     const handleSetAverageLte = (id: string | null) => {
         dispatch(setVoteAverageLteAC(Number(id)))
+        dispatch(setError(''))
     }
     const handleResetFilters = () => {
         dispatch(setResetFiltersAC({
@@ -127,14 +131,14 @@ const SelectContainer = () => {
             sort_by: sortQuery,
             ['vote_average.lte']: null, ['vote_average.gte']: null
         }))
+        dispatch(setError(''))
     }
     const handleSetSortBy = (id: string | null) => {
         setSearchParams({sortBy: id as string})
         dispatch(setSortByAC(id as string))
     }
     useEffect(() => {
-        setSearchParams({sortBy: sortBy as string})
-
+        setSearchParams({sortBy: sortBy === null ? 'popularity.desc' : sortBy as string})
     }, []);
     return (
         <div className={s.selectContainer}>
@@ -151,7 +155,7 @@ const SelectContainer = () => {
                 </div>
 
                 <div className={s.selectRatingForm}>
-                    <div className={s.selectRating}><SelectComponent type={'ratingsFrom'} rating={true}
+                    <div className={s.selectRating}><SelectComponent type={'ratingsFrom'} rating={true} error={error}
                                                                      label={'Ratings'} placeholder={'From'}
                                                                      data={averages}
                                                                      value={averageGte ? averageGte.toString() : null}
@@ -159,7 +163,7 @@ const SelectContainer = () => {
                                                                      eventHandler={handleSetAverageGte}/>
                     </div>
                     <div className={s.selectRating}><SelectComponent type={'ratingsTo'} rating={true} placeholder={'To'}
-                                                                     data={averages}
+                                                                     data={averages} error={error}
                                                                      value={averageLte ? averageLte.toString() : null}
 
                                                                      eventHandler={handleSetAverageLte}/>
