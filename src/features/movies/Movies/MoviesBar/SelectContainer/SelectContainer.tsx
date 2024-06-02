@@ -19,6 +19,8 @@ import {
     selectPrimaryReleaseYear,
     selectSortBy
 } from "../../../selectors";
+import {useSearchParams} from "react-router-dom";
+import {useEffect} from "react";
 
 const SelectContainer = () => {
     const dispatch = useAppDispatch()
@@ -32,60 +34,60 @@ const SelectContainer = () => {
     const sortByArray = [
         {
             value: 'original_title.asc',
-            label: 'Original title ascending'
+            label: 'Original titles A-Z'
         },
         {
             value: 'original_title.desc',
-            label: 'Original title descending'
+            label: 'Original titles Z-A'
         },
         {
             value: 'popularity.asc',
-            label: 'Popularity ascending'
+            label: 'Least popular'
         },
         {
             value: 'popularity.desc',
-            label: 'Popularity descending'
+            label: 'Most popular'
         },
         {
             value: 'revenue.asc',
-            label: 'Revenue ascending'
+            label: 'Least revenue'
         },
         {
             value: 'revenue.desc',
-            label: 'Revenue descending'
+            label: 'Most revenue'
         },
         {
             value: 'primary_release_date.asc',
-            label: 'Primary release date ascending'
+            label: 'Release date ascending'
         },
         {
             value: 'primary_release_date.desc',
-            label: 'Primary release date descending'
+            label: 'Release date descending'
         },
         {
             value: 'vote_average.asc',
-            label: 'Vote average ascending'
+            label: 'Least vote average'
         },
         {
             value: 'vote_average.desc',
-            label: 'Vote average descending'
+            label: 'Most vote average'
         },
 
         {
             value: 'title.asc',
-            label: 'Title ascending'
+            label: 'Title A-Z'
         },
         {
             value: 'title.desc',
-            label: 'Title descending'
+            label: 'Title Z-A'
         },
         {
             value: 'vote_count.asc',
-            label: 'Vote count ascending'
+            label: 'Least vote count'
         },
         {
             value: 'vote_count.desc',
-            label: 'Vote count descending'
+            label: 'Most vote count'
         },
     ]
     const sortBy = useAppSelector(selectSortBy)
@@ -100,7 +102,10 @@ const SelectContainer = () => {
         }
         return arr;
     }
+
     const years = createArrayYears(2024).map(el => el.toString())
+    const [searchParams, setSearchParams] = useSearchParams()
+    const sortQuery = searchParams.get('sortBy') || ''
     const handleSetGenre = (id: string | null) => {
         dispatch(setGenreAC(Number(id)))
     }
@@ -119,13 +124,18 @@ const SelectContainer = () => {
             language: 'en-Us',
             with_genres: null,
             primary_release_year: null,
-            sort_by: null,
+            sort_by: sortQuery,
             ['vote_average.lte']: null, ['vote_average.gte']: null
         }))
     }
     const handleSetSortBy = (id: string | null) => {
+        setSearchParams({sortBy: id as string})
         dispatch(setSortByAC(id as string))
     }
+    useEffect(() => {
+        setSearchParams({sortBy: sortBy as string})
+
+    }, []);
     return (
         <div className={s.selectContainer}>
             <div className={s.selectFormContainer}>
@@ -134,7 +144,8 @@ const SelectContainer = () => {
                                                                data={genres} value={genre ? genre.toString() : null}
                                                                eventHandler={handleSetGenre}/></div>
                 <div className={s.selectForm}><SelectComponent type={'releaseYear'} rating={false}
-                                                               label={'Release year'} value={year ? year.toString() : null}
+                                                               label={'Release year'}
+                                                               value={year ? year.toString() : null}
                                                                placeholder={'Select release year'}
                                                                data={years} eventHandler={handleSetYear}/>
                 </div>
@@ -142,18 +153,21 @@ const SelectContainer = () => {
                 <div className={s.selectRatingForm}>
                     <div className={s.selectRating}><SelectComponent type={'ratingsFrom'} rating={true}
                                                                      label={'Ratings'} placeholder={'From'}
-                                                                     data={averages} value={averageGte ? averageGte.toString() : null}
+                                                                     data={averages}
+                                                                     value={averageGte ? averageGte.toString() : null}
 
                                                                      eventHandler={handleSetAverageGte}/>
                     </div>
                     <div className={s.selectRating}><SelectComponent type={'ratingsTo'} rating={true} placeholder={'To'}
-                                                                     data={averages} value={averageLte ? averageLte.toString() : null}
+                                                                     data={averages}
+                                                                     value={averageLte ? averageLte.toString() : null}
 
                                                                      eventHandler={handleSetAverageLte}/>
                     </div>
                 </div>
                 <div className={s.selectResetForm}><ButtonReset title={'Reset filters'}
-                                                                genre={genre} year={year} averageGte={averageGte} averageLte={averageLte}
+                                                                genre={genre} year={year} averageGte={averageGte}
+                                                                averageLte={averageLte}
                                                                 eventHandle={handleResetFilters}/></div>
 
             </div>

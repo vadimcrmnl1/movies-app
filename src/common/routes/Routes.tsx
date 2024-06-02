@@ -23,16 +23,5 @@ const router = createHashRouter([
         ],
     }
 ])
-// const router = createBrowserRouter([
-//     {
-//         path: PATH.app,
-//         element: <App />,
-//         errorElement: <ErrorPage/>,
-//         children: [
-//             {path: PATH.ratedMovies, element: <RatedMovies/>},
-//             {path: PATH.movies, element: <MoviesContainer/>},
-//             {path: PATH.movie, element: <MovieContainer />}
-//         ],
-//     }
-// ])
+
 export default router

@@ -1,5 +1,5 @@
 
-.mantine-Select-label {
+.label {
     font-size: 16px;
     font-family: Inter, sans-serif;
     font-weight: 700;
@@ -9,32 +9,40 @@
 
 }
 
-.mantine-Select-input {
+.input {
     height: 42px;
 }
+.inputFocus {
+    height: 42px;
+    border: 1px solid #9854F6;
+}
+.ratingRightSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 25px;
+}
 
-.mantine-Select-error {
+.error {
     /*height: 40px;*/
     color: red;
     /*position: absolute;*/
     margin-bottom: 10px;
 }
 @media screen and (max-width: 600px) {
-    .mantine-Select-wrapper {
-        width: 95%;
-        /*margin: 10px;*/
-        height: min-content;
-    }
-    .mantine-Select-label {
+    /*.mantine-Select-wrapper {*/
+    /*    width: 95%;*/
+    /*    !*margin: 10px;*!*/
+    /*    height: min-content;*/
+    /*}*/
+    .label {
         width: 100%;
         font-size: 14px;
         /*margin-left: 20px;*/
     }
-    .mantine-Select-input {
+    .input {
         width: 100%;
         height: min-content;
         /*margin-left: 20px;*/
-
-
     }
 }

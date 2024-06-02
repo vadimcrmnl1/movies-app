@@ -9,6 +9,7 @@ type SearchInputPropsType = {
 }
 export const SearchInput: FC<SearchInputPropsType> = ({eventHandle}) => {
     const [value, setValue] = useState('');
+    const [focus, setFocus] = useState<boolean>(false)
     const handlePressEnter = (e: KeyboardEvent<HTMLDivElement>) => {
         if (e.code === 'Enter') {
             eventHandle(value)
@@ -18,7 +19,9 @@ export const SearchInput: FC<SearchInputPropsType> = ({eventHandle}) => {
     return (
         <div className={s.searchBlock} onKeyDown={handlePressEnter}>
             <Input
-                classNames={{wrapper: s.wrapper, input: s.input, section: s.section}}
+                classNames={{wrapper: s.wrapper, input: focus ? s.inputFocus : s.input, section: s.section}}
+                onFocus={() => setFocus(true)}
+                onBlur={() => setFocus(false)}
                 placeholder={'Search movie title'}
                 value={value}
                 onChange={(event) => setValue(event.currentTarget.value)}

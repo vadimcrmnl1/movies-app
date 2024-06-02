@@ -23,7 +23,7 @@ const moviesInitialState = {
         language: 'en-Us',
         page: 1,
         primary_release_year: null,
-        sort_by: null,
+        sort_by: 'popularity.desc',
         with_genres: null,
         ['vote_average.gte']: null,
         ['vote_average.lte']: null
@@ -75,6 +75,7 @@ export const moviesReducer = (state: MoviesInitialStateType = moviesInitialState
 export const fetchMovies = (): AppThunk<AllReducersActionsType> => async (dispatch, getState) => {
     dispatch(appActions.setAppIsLoadingAC(true))
     const params: GetMoviesParamsType = {...getState().movies.params}
+    console.log('params', params)
     try {
         const res = await moviesApi.getMovies(params)
         dispatch(moviesActions.fetchMoviesAC(res.data))
