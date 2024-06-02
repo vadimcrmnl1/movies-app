@@ -124,7 +124,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        position: center;
+        /*position: center;*/
     }
     .selectSortForm {
         justify-content: center;
@@ -160,6 +160,9 @@
     }
     .titlePageBlock {
         flex-direction: column;
+    }
+    .emptyRatedMoviesBlock {
+        height: 100%;
     }
 
 }
