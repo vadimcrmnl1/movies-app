@@ -47,3 +47,8 @@
 .openButton {
    display: flex;
 }
+@media screen and (max-width: 600px) {
+    .buttonBlock {
+        width: 100%;
+    }
+}

@@ -1,5 +1,5 @@
 import {useEffect} from 'react';
-import YouTube from 'react-youtube';
+import YouTube, {YouTubeProps} from 'react-youtube';
 
 import s from './MovieFull.module.css'
 import st from './../MovieShort/MovieShort.module.css'
@@ -24,7 +24,12 @@ export const MovieFull = () => {
         const minutes = mins % 60;
         return hours + 'h ' + minutes + 'm';
     }
+    const opts: YouTubeProps['opts'] = {
+        height: '390',
+        width: '640',
 
+
+    };
 
     useEffect(() => {
         dispatch(fetchMovieDetails(Number(movie_id)))
@@ -101,8 +106,8 @@ export const MovieFull = () => {
                     {movie.videos && movie.videos.results.length !== 0 && <div className={s.trailerContainer}>
                         <p>Trailer</p>
                         <div className={s.youtubeBlock}>
-                            {<YouTube style={{borderRadius: '9px'}} className={s.movie}
-                                      // opts={s.movie}
+                            {<YouTube className={s.movie}
+                                      opts={opts} iframeClassName={s.movie}
                                       videoId={movie.videos.results[0].key.toString()}/>}
                         </div>
                     </div>}
