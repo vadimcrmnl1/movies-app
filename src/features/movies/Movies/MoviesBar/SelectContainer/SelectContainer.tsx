@@ -104,8 +104,8 @@ const SelectContainer = () => {
         }
         return arr;
     }
-
-    const years = createArrayYears(2024).map(el => el.toString())
+    const currentYear = new Date().getFullYear()
+    const years = createArrayYears(currentYear + 5).map(el => el.toString())
     const [searchParams, setSearchParams] = useSearchParams()
     const sortQuery = searchParams.get('sortBy') || 'popularity.desc'
     const handleSetGenre = (id: string | null) => {
