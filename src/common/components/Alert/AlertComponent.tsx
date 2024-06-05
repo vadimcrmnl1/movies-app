@@ -11,7 +11,8 @@ type AlertComponentPropsType = {
 }
 export const AlertComponent: FC<AlertComponentPropsType> = ({error}) => {
     const dispatch = useAppDispatch()
-    const [opened, {open, close}] = useDisclosure()
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [, {close}] = useDisclosure()
     const handleCloseAlert = () => {
         dispatch(setNetworkError(''))
         close()
