@@ -3,7 +3,7 @@ import s from './SelectComponent.module.css'
 import {Select} from "@mantine/core";
 import {SlArrowDown, SlArrowUp} from "react-icons/sl";
 
-type SelectComponentProps = {
+type SelectComponentPropsType = {
     label?: string
     placeholder: string
     data: string[] | { value: string; label: string }[]
@@ -15,12 +15,13 @@ type SelectComponentProps = {
 }
 
 
-export const SelectComponent: FC<SelectComponentProps> = ({error, type, value, eventHandler, label, placeholder, data}) => {
+export const SelectComponent: FC<SelectComponentPropsType> = ({error, type, value, eventHandler, label, placeholder, data}) => {
     const [focus, setFocus] = useState<boolean>(false)
 
     return (
         <Select
             classNames={{
+                wrapper: s.wrapper,
                 input: focus ? s.inputFocus : s.input,
                 label: s.label,
                 error: s.error,
@@ -36,6 +37,7 @@ export const SelectComponent: FC<SelectComponentProps> = ({error, type, value, e
                     <SlArrowUp size={10}/>
                     <SlArrowDown size={10}/>
                 </div>}
+
             placeholder={placeholder}
             withCheckIcon={false}
             onFocus={() => setFocus(true)}

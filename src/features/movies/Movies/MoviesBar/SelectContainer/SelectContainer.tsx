@@ -155,12 +155,14 @@ const SelectContainer = () => {
                 </div>
 
                 <div className={s.selectRatingForm}>
-                    <div className={s.selectRating}><SelectComponent type={'ratingsFrom'} rating={true} error={error}
+                    <div className={s.selectRating}>
+                        <SelectComponent type={'ratingsFrom'} rating={true} error={error}
                                                                      label={'Ratings'} placeholder={'From'}
                                                                      data={averages}
                                                                      value={averageGte ? averageGte.toString() : null}
 
                                                                      eventHandler={handleSetAverageGte}/>
+                        {/*<Input label={'Ratings'} placeholder={'From'} error={error} eventHandler={handleSetAverageGte}/>*/}
                     </div>
                     <div className={s.selectRating}><SelectComponent type={'ratingsTo'} rating={true} placeholder={'To'}
                                                                      data={averages} error={error}

@@ -16,9 +16,12 @@ import {MovieShort} from "./Movie/MovieShort/MovieShort";
 import {PaginationComponent} from "../../../../common/components/Pagination/PaginationComponent";
 import {IncorrectSearch} from "../../../../common/components/IncorrectSearch/IncorrectSearch";
 import {setNetworkError} from "../../../../app/actions.ts";
+import {selectIsLoading} from "../../../../app/selectors.ts";
+import {LoaderComponent} from "../../../../common/components/Loader/Loader.tsx";
 
 export const MoviesBar = () => {
     const dispatch = useAppDispatch()
+    const isLoading = useAppSelector(selectIsLoading)
     const movies = useAppSelector(selectMovies)
     const page = useAppSelector(selectPage)
     const genre = useAppSelector(selectGenre)
@@ -39,7 +42,8 @@ export const MoviesBar = () => {
                 <p className={s.title}>Movies</p>
                 <SelectContainer/>
                 <div className={s.moviesContainer}>
-                    {movies.results && movies.results.map((el) => {
+                    {isLoading ? <LoaderComponent/> :
+                    movies.results && movies.results.map((el) => {
                         return <MovieShort key={el.id} id={el.id} image={el.poster_path}
                                            title={el.title} year={el.release_date}
                                            popularity={el.popularity}
@@ -48,7 +52,7 @@ export const MoviesBar = () => {
                                            genre={el.genre_ids}/>
                     })}
                 </div>
-                {movies.results.length !== 0 ? <div className={s.paginationBlock}>
+                {!isLoading && movies.results.length !== 0 ? <div className={s.paginationBlock}>
                         <PaginationComponent/>
                     </div>
                     : <IncorrectSearch title={' We don\'t have such movies, look for another one'}/>}

@@ -39,7 +39,6 @@ export const MovieFull = () => {
 
     return (
         <div className={s.wrapper}>
-
             <div className={s.linkBlock}>
                 <div className={s.movies}>Movies</div>
                 <span style={{margin: '0 10px 0 10px'}}>/</span>
@@ -56,7 +55,8 @@ export const MovieFull = () => {
                         <div className={s.informBlock}>
                             <div className={s.titleBlock}>
                                 <div className={st.title}>{movie.title}</div>
-                                <div className={st.year}>{movie.release_date && movie.release_date.slice(0, 4)}</div>
+                                <div
+                                    className={st.year}>{movie.release_date && movie.release_date.slice(0, 4)}</div>
                                 <div className={st.averageContainer}>
                                     <div className="fa-solid fa-star"
                                          style={{color: '#FAB005', fontSize: '23px'}}>{null}</div>
@@ -96,7 +96,10 @@ export const MovieFull = () => {
                         </div>
                     </div>
                     <div className={s.starBlock}>
-                        <ModalForm genre={genresMovieDetails} image={movie.poster_path} year={movie.release_date} popularity={movie.popularity} voteCount={movie.vote_count} voteAverage={movie.vote_average} id={movie.id} headerTitle={'Your rating'} title={movie.title}/>
+                        <ModalForm genre={genresMovieDetails} image={movie.poster_path} year={movie.release_date}
+                                   popularity={movie.popularity} voteCount={movie.vote_count}
+                                   voteAverage={movie.vote_average} id={movie.id} headerTitle={'Your rating'}
+                                   title={movie.title}/>
 
                     </div>
                 </div>
@@ -118,16 +121,17 @@ export const MovieFull = () => {
                         </div>
                     </div>}
                     {movie.production_companies && movie.production_companies.length !== 0 &&
-                    <div className={s.trailerContainer}>
-                        <p>Production</p>
-                        {movie.production_companies.map(el => {
-                            return <div key={el.id} className={s.prodBlock}>
-                                <img src={el.logo_path ? `https://image.tmdb.org/t/p/w500${el.logo_path}` : noImage}
-                                     alt={el.name}/>
-                                <span className={s.prodTitle}>{el.name}</span>
-                            </div>
-                        })}
-                    </div>}
+                        <div className={s.trailerContainer}>
+                            <p>Production</p>
+                            {movie.production_companies.map(el => {
+                                return <div key={el.id} className={s.prodBlock}>
+                                    <img
+                                        src={el.logo_path ? `https://image.tmdb.org/t/p/w500${el.logo_path}` : noImage}
+                                        alt={el.name}/>
+                                    <span className={s.prodTitle}>{el.name}</span>
+                                </div>
+                            })}
+                        </div>}
                 </div>
 
             </div>

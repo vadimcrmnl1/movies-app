@@ -1,4 +1,6 @@
+.wrapper {
 
+}
 .label {
     font-size: 16px;
     font-family: Inter, sans-serif;
@@ -6,27 +8,40 @@
     padding-bottom: 8px;
     margin-right: 10px;
     z-index: 9;
-
 }
 
 .input {
     height: 42px;
 }
 .inputFocus {
+
     height: 42px;
     border: 1px solid #9854F6;
 }
 .input:hover {
+    transition: 0.3s;
     height: 42px;
     border: 1px solid #9854F6;
 }
 .ratingRightSection {
+    z-index: 99;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 25px;
+    height: 80%;
+    width: 40%;
+}
+.rightSectionButton {
+    border: none;
+    background-color: #ffffff;
+    width: 15px;
+    height: 15px;
+}
+.rightSectionButton:hover {
+    background-color: #eaeaea;
 }
 .dropdown {
+    transition: 0.3s;
     border-radius: 8px;
 }
 .options {
